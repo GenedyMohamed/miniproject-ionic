@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+       {{major.major}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <ion-list>
+    <ion-item *ngFor="let semester of semesters" (click)="semesterSelected(semester)">
+      <h2>Semester {{semester}}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

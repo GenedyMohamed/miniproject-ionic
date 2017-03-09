@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Add new question
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{pp}}">
+      </ion-avatar>
+      <h2>{{fname}} {{lname}}</h2>
+    </ion-item>
+
+
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-input type="text" placeholder="Ask a question" [(ngModel)]="question.body"></ion-input>
+      </ion-item>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <div class="center">
+          <button icon-right ion-button round style="width: 25%;"  (click)="ask()">Ask
+            <ion-icon name="send"> </ion-icon>
+          </button>
+        </div> 
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+
+
+
+  <!-- <ion-list class="container">
+
+    <ion-item>
+      <ion-input type="text" placeholder="Ask a question" [(ngModel)]="question.body"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <br>
+
+  <div class="center">
+    <button icon-right ion-button round style="width: 25%;"  (click)="ask()">Ask
+      <ion-icon name="send"> </ion-icon>
+    </button>
+  </div> -->
+</ion-content>

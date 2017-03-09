@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>All questions</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content speaker-list" style=" background-color: #e3e8ef;">
+  <ion-list no-lines>
+
+    <!-- <ion-item>
+        <ion-label fixed>Ask a question</ion-label>
+        <ion-input type="text" value=""  [(ngModel)]="question.body"></ion-input>
+    </ion-item>
+    <button ion-button clear>Primary Clear</button> -->
+
+  <ion-card *ngFor="let question of questions" class="speaker-card">
+    <ion-item>
+      <ion-avatar item-left *ngIf='question.asker[0].profile_picture == ""'>
+        <img src="{{"assets/img/default.png"}}">
+      </ion-avatar>
+      <ion-avatar item-left *ngIf='question.asker[0].profile_picture != ""'>
+
+        <img src="http://localhost:8000/art/pp/58b5627a896c4.png">
+      </ion-avatar>
+      <h2>{{question.asker[0].first_name}} {{question.asker[0].last_name}}</h2>
+      <p>{{question.created_at | date:'yyyy-MM-dd'}}</p>
+    </ion-item>
+
+
+    <ion-card-content>
+      <p>
+        {{question.question}}
+      </p>
+      </ion-card-content>
+
+    <ion-row>
+      <ion-col center text-center>
+        <button ion-button icon-left clear small  [disabled]="!isAuth" (click)="up(question)">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>Vote up</div>
+        </button>
+
+      </ion-col>
+      <ion-col center text-center>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{question.count_answers}} Answers</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <button ion-button icon-left clear small [disabled]="!isAuth" (click)="down(question)">
+          <ion-icon name="thumbs-down"></ion-icon>
+          <div>Vote down</div>
+        </button>
+      </ion-col>
+
+         <ion-badge item-right>  {{question.votes}} Votes</ion-badge>
+
+    </ion-row>
+
+  </ion-card>
+
+
+  </ion-list>
+  <div class="center">
+
+    <button ion-button clear (click)="more()">show more questions</button>
+  </div>
+  <ion-fab right bottom>
+
+      <button ion-fab color="primary" [disabled]="!isAuth" (click)="add()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>>
