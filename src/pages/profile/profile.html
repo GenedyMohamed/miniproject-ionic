@@ -5,96 +5,94 @@
 </ion-header>
 <ion-content padding>
   <div class="img">
-      <img src="{{pp}}" alt="" />
-      <br>
+    <img src="{{pp}}" alt=""/>
+    <br>
 
   </div>
-<h3 class="center">{{fname}} {{lname}}</h3>
-<h4 class="center"> {{email}}</h4>
-<h5 class="center">{{major}}</h5>
+  <h3 class="center">{{fname}}
+    {{lname}}</h3>
+  <h4 class="center">
+    {{email}}</h4>
+  <h5 class="center">{{major}}</h5>
   <div padding>
-  <ion-segment [(ngModel)]="ProfileQuestionsAnswers" color="primary">
-    <ion-segment-button value="questions" (ionSelect)="selectedQuestions()">
-      questions
-    </ion-segment-button>
-    <ion-segment-button value="answers" (ionSelect)="selectedAnswers()">
-      Answers
-    </ion-segment-button>
-  </ion-segment>
+    <ion-segment [(ngModel)]="ProfileQuestionsAnswers" color="primary">
+      <ion-segment-button value="questions" (ionSelect)="selectedQuestions()">
+        questions
+      </ion-segment-button>
+      <ion-segment-button value="answers" (ionSelect)="selectedAnswers()">
+        Answers
+      </ion-segment-button>
+    </ion-segment>
   </div>
 
   <div [ngSwitch]="ProfileQuestionsAnswers">
     <ion-list *ngSwitchCase="'questions'">
 
-        <ion-card *ngFor="let item of questions; let i = index">
+      <ion-card *ngFor="let item of questions; let i = index">
 
-  <ion-item>
-    <ion-avatar item-left>
-      <img src="{{pp}}">
-    </ion-avatar>
-    <h2>{{fname}} {{lname}}</h2>
-    <p>{{item.created_at | date:'yyyy-MM-dd'}}</p>
-  </ion-item>
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="{{pp}}">
+          </ion-avatar>
+          <h2>{{fname}}
+            {{lname}}</h2>
+          <p>{{item.created_at | date:'yyyy-MM-dd'}}</p>
+        </ion-item>
 
+        <ion-card-content>
+          <p>{{item.question}}</p>
+        </ion-card-content>
 
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small [disabled]='true'>
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>{{item.votes}}
+                votes</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-left clear small [disabled]='true'>
+              <ion-icon name="text"></ion-icon>
+              <div>{{item.answer_count}} answers</div>
+            </button>
+          </ion-col>
 
-  <ion-card-content>
-    <p>{{item.question}}</p>
-  </ion-card-content>
+        </ion-row>
 
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small [disabled]='true'>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>{{item.votes}} votes</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small [disabled]='true'>
-        <ion-icon name="text"></ion-icon>
-        <div>4 answers</div>
-      </button>
-    </ion-col>
-
-  </ion-row>
-
-</ion-card>
-
+      </ion-card>
 
     </ion-list>
 
     <ion-list *ngSwitchCase="'answers'">
       <ion-card *ngFor="let item of answres; let i = index">
 
-<ion-item>
-  <ion-avatar item-left>
-    <img src="{{pp}}">
-  </ion-avatar>
-  <h2>{{fname}} {{lname}}</h2>
-  <p>{{item.created_at | date:'yyyy-MM-dd'}}</p>
-</ion-item>
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="{{pp}}">
+          </ion-avatar>
+          <h2>{{fname}}
+            {{lname}}</h2>
+          <p>{{item.created_at | date:'yyyy-MM-dd'}}</p>
+        </ion-item>
 
+        <ion-card-content>
+          <p>{{item.answer}}</p>
+        </ion-card-content>
 
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small [disabled]='true'>
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>{{item.votes}}
+                votes</div>
+            </button>
+          </ion-col>
 
-<ion-card-content>
-  <p>{{item.answer}}</p>
-</ion-card-content>
+        </ion-row>
 
-<ion-row>
-  <ion-col>
-    <button ion-button icon-left clear small [disabled]='true'>
-      <ion-icon name="thumbs-up"></ion-icon>
-      <div>{{item.votes}} votes</div>
-    </button>
-  </ion-col>
-
-</ion-row>
-
-</ion-card>
+      </ion-card>
     </ion-list>
   </div>
-
-
-
 
 </ion-content>

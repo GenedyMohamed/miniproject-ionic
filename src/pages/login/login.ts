@@ -3,6 +3,8 @@ import {NavController, NavParams,AlertController} from 'ionic-angular';
 import {Http,Headers} from '@angular/http';
 import {Service} from '../../app/service';
 import { Register } from '../register/register';
+import * as config from '../../app/config.json';
+
 import 'rxjs/add/operator/map';
 @Component({
   selector: 'login',
@@ -27,7 +29,7 @@ export class Login {
  login(){
    let headers1 = new Headers();
    headers1.append('Access-Control-Allow-Origin','http://localhost:8100');
-   var url = 'http://localhost:8000/api/v1/login';
+   var url = config.server+'api/v1/login';
    let data = {
      'email': this.user.email,
      'password': this.user.password

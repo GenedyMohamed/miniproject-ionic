@@ -5,6 +5,7 @@ import {Service} from '../../app/service';
 import {Profile} from '../profile/profile';
 import {Http,Headers} from '@angular/http';
 import { Semester } from '../semester/semester';
+import * as config from '../../app/config.json';
 
 @Component({
   selector: 'majors',
@@ -18,7 +19,7 @@ export class Majors {
   getMajors(){
     let headers1 = new Headers();
     headers1.append('Access-Control-Allow-Origin','http://localhost:8100');
-    var url = 'http://localhost:8000/api/v1/browse/';
+    var url = config.server+'api/v1/browse/';
 
     this.http.get(url).map(res => res.json()).subscribe(data => {
       this.majors=data.majors;

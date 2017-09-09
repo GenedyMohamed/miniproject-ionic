@@ -3,7 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { Home } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Login } from '../pages/login/login';
 import { Register } from '../pages/register/register';
@@ -15,12 +15,15 @@ import { Service } from './service';
 import { JwtHelper } from 'angular2-jwt';
 import { Questions } from '../pages/questions/questions';
 import { Add } from '../pages/add/add';
+import { SubscribePage} from '../pages/subscribe/subscribe'
+import { StatusBar } from '@ionic-native/status-bar';
+
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
+    Home,
     TabsPage,
     Login,
     Register,
@@ -29,7 +32,8 @@ import { Add } from '../pages/add/add';
     Semester,
     Courses,
     Questions,
-    Add
+    Add,
+    SubscribePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -39,7 +43,7 @@ import { Add } from '../pages/add/add';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
+    Home,
     TabsPage,
     Login,
     Register,
@@ -48,8 +52,9 @@ import { Add } from '../pages/add/add';
     Semester,
     Courses,
     Questions,
-    Add
+    Add,
+    SubscribePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,JwtHelper]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,JwtHelper,StatusBar]
 })
 export class AppModule {}

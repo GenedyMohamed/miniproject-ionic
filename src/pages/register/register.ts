@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import {NavController, NavParams,AlertController} from 'ionic-angular';
 import {Http,Headers} from '@angular/http';
 import {Service} from '../../app/service';
-import { HomePage } from '../home/home';
+import { Home } from '../home/home';
+import * as config from '../../app/config.json';
+
 import 'rxjs/add/operator/map';
 @Component({
   selector: 'register',
@@ -31,7 +33,7 @@ export class Register {
       buttons: [{
         text: 'back to home screen',
         handler: data =>{
-          this.navCtrl.push(HomePage);
+          this.navCtrl.push(Home);
          console.log("clicked");
        }
       }
@@ -43,7 +45,7 @@ export class Register {
  login(){
    let headers1 = new Headers();
    headers1.append('Access-Control-Allow-Origin','http://localhost:8100');
-   var url = 'http://localhost:8000/api/v1/login';
+   var url = config.server+'api/v1/login';
    let data = {
      'email': this.user.email,
      'password': this.user.password
@@ -63,7 +65,7 @@ export class Register {
   register(){
     let headers1 = new Headers();
     headers1.append('Access-Control-Allow-Origin','http://localhost:8100');
-    var url = 'http://localhost:8000/api/v1/register';
+    var url = config.server+'api/v1/register';
     let data = {
       'first_name': this.user.fname,
       'last_name': this.user.lname,
