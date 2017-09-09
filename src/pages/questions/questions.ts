@@ -5,6 +5,7 @@ import {Service} from '../../app/service';
 import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import {Add} from '../add/add';
+import { QuestionPage } from '../question/question'
 import * as config from '../../app/config.json';
 
 @Component({
@@ -110,7 +111,10 @@ export class Questions {
       });
   }
   goToQuestion(question) {
-    console.log(question);
+    this.navCtrl.push(QuestionPage,{
+      question: question
+    })
+    console.log("IN QUESTIONS PAGE"+question);
   }
 
   showAlert(msg) {

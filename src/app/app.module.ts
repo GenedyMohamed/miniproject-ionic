@@ -17,6 +17,8 @@ import { Questions } from '../pages/questions/questions';
 import { Add } from '../pages/add/add';
 import { SubscribePage} from '../pages/subscribe/subscribe'
 import { StatusBar } from '@ionic-native/status-bar';
+import { QuestionPage } from '../pages/question/question'
+import { PostAnswerPage } from '../pages/post-answer/post-answer'
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { StatusBar } from '@ionic-native/status-bar';
     Courses,
     Questions,
     Add,
-    SubscribePage
+    SubscribePage,
+    QuestionPage,
+    PostAnswerPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -53,7 +57,9 @@ import { StatusBar } from '@ionic-native/status-bar';
     Courses,
     Questions,
     Add,
-    SubscribePage
+    SubscribePage,
+    QuestionPage,
+    PostAnswerPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,JwtHelper,StatusBar]
 })

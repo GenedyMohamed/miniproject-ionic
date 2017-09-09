@@ -1,0 +1,116 @@
+<!--
+  Generated template for the Question page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>question</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style=" background-color: #e3e8ef;">
+
+  <ion-card class="speaker-card">
+    <div>
+      <ion-item>
+        <ion-avatar item-left *ngIf='question.asker[0].profile_picture == ""'>
+          <img src="{{" assets/img/default.png"}}">
+        </ion-avatar>
+        <ion-avatar item-left *ngIf='question.asker[0].profile_picture != ""'>
+
+          <img src="{{question.asker[0].profile_picture}}">
+        </ion-avatar>
+        <h2>{{question.asker[0].first_name}}
+          {{question.asker[0].last_name}}</h2>
+        <p>{{question.created_at | date:'yyyy-MM-dd'}}</p>
+        <ion-badge item-right>
+          {{question.votes}}
+          Votes</ion-badge>
+      </ion-item>
+
+      <ion-card-content>
+        <p>
+          {{question.question}}
+        </p>
+      </ion-card-content>
+    </div>
+    <ion-row>
+      <ion-col center text-center col-4>
+        <button ion-button icon-left clear small [disabled]="!isAuth" (click)="up(question)">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>Vote up</div>
+        </button>
+
+      </ion-col>
+      <ion-col center text-center col-4>
+        <button ion-button icon-left clear small [disabled]="true">
+          <ion-icon name="text"></ion-icon>
+          <div>{{question.count_answers}}
+            Answers</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center col-3>
+        <button ion-button icon-left clear small [disabled]="!isAuth" (click)="down(question)">
+          <ion-icon name="thumbs-down"></ion-icon>
+          <div>Vote down</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <ion-list no-lines>
+    <ion-card >
+      <div *ngFor="let answer of answers">
+        <ion-item>
+          <ion-avatar item-left *ngIf='answer.responder.profile_picture == ""'>
+            <img src="{{" assets/img/default.png"}}">
+          </ion-avatar>
+          <ion-avatar item-left *ngIf='answer.responder.profile_picture != ""'>
+
+            <img src="{{answer.responder.profile_picture}}">
+          </ion-avatar>
+          <h2>{{answer.responder.first_name}}
+            {{answer.responder.last_name}}</h2>
+          <p>{{answer.created_at | date:'yyyy-MM-dd'}}</p>
+          <ion-badge item-right>
+            {{answer.votes}}
+            Votes</ion-badge>
+        </ion-item>
+
+        <ion-card-content>
+          <p>
+            {{answer.answer}}
+          </p>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col center text-center>
+            <button ion-button icon-left clear small [disabled]="!isAuth" (click)="up(answer)">
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>Vote up</div>
+            </button>
+
+          </ion-col>
+          <ion-col center text-center>
+            <button ion-button icon-left clear small [disabled]="!isAuth" (click)="down(answer)">
+              <ion-icon name="thumbs-down"></ion-icon>
+              <div>Vote down</div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+
+  </ion-list>
+  <ion-fab bottom right >
+    <button ion-fab (click)="post()" [disabled]="!isAuth">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

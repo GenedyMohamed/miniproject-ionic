@@ -1,5 +1,5 @@
-<ion-header color="#00e8e0" home>
-  <ion-toolbar color="#00e8e0">
+<ion-header home>
+  <ion-toolbar >
     <ion-title>Home</ion-title>
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="goToLogin()">
@@ -29,7 +29,7 @@
 
       <ion-card *ngFor="let question of questions">
 
-        <div (click)="goToQuestion()">
+        <div (click)="goToQuestion(question)">
 
           <ion-item>
             <ion-avatar item-left *ngIf='question.asker[0].profile_picture == ""'>
@@ -63,7 +63,7 @@
 
           </ion-col>
           <ion-col center text-center  col-4>
-            <button ion-button icon-left clear small>
+            <button ion-button icon-left clear small (click)="goToQuestion(question)">
               <ion-icon name="text"></ion-icon>
               <div>{{question.count_answers}}
                 Answers</div>

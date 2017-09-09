@@ -5,6 +5,7 @@ import {Service} from '../../app/service';
 import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
+import { QuestionPage } from '../question/question'
 import * as config from '../../app/config.json';
 
 
@@ -95,8 +96,11 @@ export class Home {
       });
   }
 
-  goToQuestion() {
-    this.showAlert("hiiiiii");
+  goToQuestion(question) {
+    this.navCtrl.push(QuestionPage,{
+      question: question
+    })
+    console.log("IN HOME PAGE"+question);
     console.log("Question");
   }
 
