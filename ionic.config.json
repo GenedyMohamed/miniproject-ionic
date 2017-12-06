@@ -1,6 +1,6 @@
 {
   "name": "askafellow",
   "app_id": "f16b14db",
-  "v2": true,
-  "typescript": true
+  "integrations": {},
+  "type": "ionic-angular"
 }

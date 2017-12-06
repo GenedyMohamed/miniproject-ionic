@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams, AlertController, Events } from 'ionic-angular';
 import {Service} from '../../app/service';
+import {QuestionsService} from '../../app/services/questionsService'
 import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import {Add} from '../add/add';
@@ -15,13 +16,13 @@ import * as config from '../../app/config.json';
 export class Questions {
   course: any = {};
   questions: any[] = [];
-  next: string = "";
-  data: any = {};
+  next: string;
+  data: any;
   pp: string = "assets/img/default.png";
-  question: any = {};
+  question: any;
   isAuth: boolean;
   noMore: boolean;
-  constructor(public navCtrl: NavController, public service: Service, public http: Http, private navParams: NavParams, public alertCtrl: AlertController, public events: Events) {
+  constructor(public navCtrl: NavController, public service: Service, public http: Http, private navParams: NavParams, public alertCtrl: AlertController, public events: Events, public questionsService: QuestionsService) {
     this.course = navParams.get('course');
     console.log(this.course);
     this.isAuth = service.isAuthenticated();
@@ -33,42 +34,30 @@ export class Questions {
   }
 
   getQuestions() {
-    let headers1 = new Headers();
-    headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
-
-    var url = config.server + 'api/v1/browse/' + this.course.id;
-
-    this.http.get(url).map(res => res.json()).subscribe(data => {
-      this.questions = data.questions.data;
-      this.next = data.questions.next_page_url
-      if (this.next == null) {
-        this.noMore = true;
-      }
-      console.log(data.questions.next_page_url);
-      console.log(this.questions);
-    },
-      err => {
+    this.questionsService.getQuestions(this.course.id)
+      .then((data) => {
+        this.questions = data.questions.data;
+        this.next = data.questions.next_page_url
+        if (this.next == null) {
+          this.noMore = true;
+        }
+      })
+      .catch((err) => {
         console.log(err);
-      });
+      })
   }
   more() {
-    let headers1 = new Headers();
-    headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
-
-    var url = config.server + this.next;
-    console.log(url)
-    this.http.get(url).map(res => res.json()).subscribe(data => {
-      //console.log(data);
-      this.next = data.questions.next_page_url;
+    this.questionsService.more(this.next)
+    .then((data)=>{
+      this.next = data['questions'].next_page_url;
       if (this.next == null) {
         this.noMore = true;
       }
-      this.questions = this.questions.concat(data.questions.data);
-      console.log(this.questions);
-    },
-      err => {
-        console.log(err);
-      });
+      this.questions = this.questions.concat(data['questions'].data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
 
   add() {
@@ -77,44 +66,36 @@ export class Questions {
     });
   }
   up(question) {
-    let headers1 = new Headers();
-
-    headers1.append('x-access-token', this.service.getToken());
-    var url = config.server + "api/v1/vote/question/" + question.id + "/0";
-
-    this.http.get(url, { headers: headers1 }).map(res => res.json()).subscribe(data => {
-      if (!data.error) {
+    this.questionsService.up(question.id, this.service.getToken())
+    .then((data)=>{
+      if (!data['error']) {
         question.votes++;
       } else {
-        this.showAlert(data.state);
+        this.showAlert(data['state']);
       }
-    },
-      err => {
-        console.log(err);
-      });
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
   }
   down(question) {
-    let headers1 = new Headers();
-
-    headers1.append('x-access-token', this.service.getToken());
-    var url = config.server + "api/v1/vote/question/" + question.id + "/1";
-
-    this.http.get(url, { headers: headers1 }).map(res => res.json()).subscribe(data => {
-      if (!data.error) {
+    this.questionsService.up(question.id, this.service.getToken())
+    .then((data)=>{
+      if (!data['error']) {
         question.votes--;
       } else {
-        this.showAlert(data.state);
+        this.showAlert(data['state']);
       }
-    },
-      err => {
-        console.log(err);
-      });
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
   }
   goToQuestion(question) {
-    this.navCtrl.push(QuestionPage,{
+    this.navCtrl.push(QuestionPage, {
       question: question
     })
-    console.log("IN QUESTIONS PAGE"+question);
+    console.log("IN QUESTIONS PAGE" + question);
   }
 
   showAlert(msg) {

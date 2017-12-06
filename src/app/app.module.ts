@@ -24,6 +24,7 @@ import { PostAnswerPage } from '../pages/post-answer/post-answer'
 // Services goes here
 import { Service } from './service';
 import { QuestionsService } from './services/questionsService';
+import { UserService } from './services/userService'
 
 // Any helper libraries
 import { JwtHelper } from 'angular2-jwt';
@@ -69,6 +70,6 @@ import { JwtHelper } from 'angular2-jwt';
     QuestionPage,
     PostAnswerPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,JwtHelper,StatusBar]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,JwtHelper,StatusBar]
 })
 export class AppModule {}

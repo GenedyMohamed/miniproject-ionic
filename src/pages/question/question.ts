@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import {Http, Headers} from '@angular/http';
 import {Service} from '../../app/service';
+import {QuestionsService} from '../../app/services/questionsService'
 import { PostAnswerPage } from '../post-answer/post-answer';
 import * as config from '../../app/config.json';
 /*
@@ -20,7 +21,7 @@ export class QuestionPage {
   pp: string = "assets/img/default.png";
   isAuth: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public service: Service, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public service: Service, public popoverCtrl: PopoverController, public questionsService: QuestionsService) {
     this.question = navParams.get('question');
     this.isAuth = service.isAuthenticated();
     this.getAnswers(this.question);
@@ -33,18 +34,13 @@ export class QuestionPage {
     console.log('ionViewDidLoad QuestionPage');
   }
   getAnswers(question) {
-    let headers1 = new Headers();
-    headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
-
-    var url = config.server + 'api/v1/answers/' + this.question.id + '/latest';
-
-    this.http.get(url).map(res => res.json()).subscribe(data => {
-      this.answers = data.data;
-      console.log(this.answers);
-    },
-      err => {
-        console.log(err);
-      });
+    this.questionsService.getAnswers(question.id)
+    .then(data=>{
+      this.answers = data;
+    })
+    .catch(err=>{
+      console.log(err);
+    })
   }
   up(answer) {
     console.log("UP");
@@ -57,7 +53,7 @@ export class QuestionPage {
     let popover = this.popoverCtrl.create(PostAnswerPage,{
       question: this.question
     });
-      popover.present();
+    popover.present();
   }
 
 }
