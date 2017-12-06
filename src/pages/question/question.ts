@@ -35,12 +35,12 @@ export class QuestionPage {
   }
   getAnswers(question) {
     this.questionsService.getAnswers(question.id)
-    .then(data=>{
-      this.answers = data;
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+      .then(data => {
+        this.answers = data;
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
   up(answer) {
     console.log("UP");
@@ -48,9 +48,9 @@ export class QuestionPage {
   down(answer) {
     console.log("DOWN");
   }
-  post(){
+  post() {
     console.log("IN POST")
-    let popover = this.popoverCtrl.create(PostAnswerPage,{
+    let popover = this.popoverCtrl.create(PostAnswerPage, {
       question: this.question
     });
     popover.present();

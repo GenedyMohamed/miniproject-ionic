@@ -57,4 +57,33 @@ export class UserService {
         });
     });
   }
+
+  register(userInfo) {
+    return new Promise((resolve, reject) => {
+      let headers1 = new Headers();
+      headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
+      var url = config.server + 'api/v1/register';
+      this.http.post(url, userInfo).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          reject(err);
+        });
+    });
+  }
+
+  getUserInfo(id) {
+    return new Promise((resolve, reject) => {
+      let headers1 = new Headers();
+      headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
+      var url = config.server + 'api/v1/user/' + id;
+
+      this.http.get(url).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          reject(err);
+        });
+    });
+  }
 }

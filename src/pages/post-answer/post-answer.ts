@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Events, AlertController } from 'ionic-angular';
 import {Service} from '../../app/service';
+import { QuestionsService } from '../../app/services/questionsService'
+
 import {Http, Headers} from '@angular/http';
 import * as config from '../../app/config.json';
 /*
@@ -15,31 +17,23 @@ import * as config from '../../app/config.json';
 })
 export class PostAnswerPage {
   answer: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public service: Service, public events: Events, public alert: AlertController) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public service: Service, public events: Events, public alert: AlertController, private questionsService: QuestionsService) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostAnswerPage');
   }
   post() {
-    console.log(this.answer);
-    let headers1 = new Headers();
-    headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
-    headers1.append('x-access-token', this.service.getToken());
-    console.log(this.service.getToken());
-    var question = this.navParams.get('question');
-    var url = config.server + 'api/v1/answers/' + question.id;
-    console.log(url);
-    console.log(headers1)
-    let data = { answer: this.answer };
-    this.http.post(url, data, { headers: headers1 }).map(res => res.json()).subscribe(data => {
-      if (data.error == false) {
-        // this.events.publish('reloadPage2', data.data);
-        this.navCtrl.pop();
-      } else {
-        this.showAlert("somethisng went wrong, please try again ");
-      }
-    },
-      err => {
+    const question = this.navParams.get('question');
+    this.questionsService.postAnswer(this.service.getToken(), question.id, this.answer)
+      .then((data) => {
+        console.log(data['error']);
+        if (data['error'] == false) {
+          this.navCtrl.pop();
+        } else {
+          this.showAlert("Make sure that the answer is at least 5 characters");
+        }
+      })
+      .catch((err) => {
         console.log(err);
       });
   }

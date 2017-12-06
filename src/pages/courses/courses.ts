@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 import {Service} from '../../app/service';
+import { QuestionsService } from '../../app/services/questionsService'
 import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import { Questions } from '../questions/questions';
@@ -15,26 +16,18 @@ export class Courses {
   courses: Object[] = [];
   major: any = {};
   semester: any = 0;
-  constructor(public navCtrl: NavController, public service: Service, public http: Http, private navParams: NavParams) {
+  constructor(public navCtrl: NavController, public service: Service, public http: Http, private navParams: NavParams, private questionsService: QuestionsService) {
     this.major = this.navParams.get('major');
     this.semester = this.navParams.get('semester');
-    console.log(this.major);
-    console.log(this.semester);
     this.getCourses();
   }
 
   getCourses() {
-    let headers1 = new Headers();
-    headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
-
-    var url = config.server+'api/v1/list_courses/' + this.major.id + '/' + this.semester;
-
-    this.http.get(url).map(res => res.json()).subscribe(data => {
-      this.courses = data.courses;
-
-
-    },
-      err => {
+    this.questionsService.getCourses(this.major.id, this.semester)
+      .then((data) => {
+        this.courses = data['courses'];
+      })
+      .catch((err) => {
         console.log(err);
       });
   }
