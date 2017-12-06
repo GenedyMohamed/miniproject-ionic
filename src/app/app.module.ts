@@ -1,7 +1,15 @@
 // Native modules goes here
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { Http } from '@angular/http'
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
+//Ionic native plugins goes here
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Pages goes here
 import { AboutPage } from '../pages/about/about';
@@ -17,7 +25,6 @@ import {Courses} from '../pages/courses/courses';
 import { Questions } from '../pages/questions/questions';
 import { Add } from '../pages/add/add';
 import { SubscribePage} from '../pages/subscribe/subscribe'
-import { StatusBar } from '@ionic-native/status-bar';
 import { QuestionPage } from '../pages/question/question'
 import { PostAnswerPage } from '../pages/post-answer/post-answer'
 
@@ -49,6 +56,9 @@ import { JwtHelper } from 'angular2-jwt';
     PostAnswerPage
   ],
   imports: [
+    BrowserModule,
+    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -70,6 +80,7 @@ import { JwtHelper } from 'angular2-jwt';
     QuestionPage,
     PostAnswerPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,JwtHelper,StatusBar]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,JwtHelper, StatusBar,
+  SplashScreen,HttpModule]
 })
 export class AppModule {}
