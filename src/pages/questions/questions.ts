@@ -48,16 +48,16 @@ export class Questions {
   }
   more() {
     this.questionsService.more(this.next)
-    .then((data)=>{
-      this.next = data['questions'].next_page_url;
-      if (this.next == null) {
-        this.noMore = true;
-      }
-      this.questions = this.questions.concat(data['questions'].data);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+      .then((data) => {
+        this.next = data['questions'].next_page_url;
+        if (this.next == null) {
+          this.noMore = true;
+        }
+        this.questions = this.questions.concat(data['questions'].data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   add() {
@@ -67,29 +67,29 @@ export class Questions {
   }
   up(question) {
     this.questionsService.up(question.id, this.service.getToken())
-    .then((data)=>{
-      if (!data['error']) {
-        question.votes++;
-      } else {
-        this.showAlert(data['state']);
-      }
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
+      .then((data) => {
+        if (!data['error']) {
+          question.votes++;
+        } else {
+          this.showAlert(data['state']);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   down(question) {
     this.questionsService.up(question.id, this.service.getToken())
-    .then((data)=>{
-      if (!data['error']) {
-        question.votes--;
-      } else {
-        this.showAlert(data['state']);
-      }
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
+      .then((data) => {
+        if (!data['error']) {
+          question.votes--;
+        } else {
+          this.showAlert(data['state']);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   goToQuestion(question) {
     this.navCtrl.push(QuestionPage, {

@@ -20,7 +20,7 @@ export class Home {
   questions: any[] = [];
   next: string;
   noMore: boolean;
-  constructor(public navCtrl: NavController, public service: Service,public questionsService: QuestionsService,public userService: UserService ,private http: Http, private alertCtrl: AlertController,public statusBar: StatusBar) {
+  constructor(public navCtrl: NavController, public service: Service, public questionsService: QuestionsService, public userService: UserService, private http: Http, private alertCtrl: AlertController, public statusBar: StatusBar) {
     this.statusBar.backgroundColorByHexString('#FF7043');
     this.reload();
   }
@@ -45,58 +45,54 @@ export class Home {
   }
   getContent() {
     this.userService.getHomeConetent(this.service.getToken())
-    .then((data)=>{
-      this.next = data['next_page_url']
-      console.log(this.next)
-      if (this.next == null) {
-        this.noMore = true;
-      }
-      this.questions = data['data'];
-      console.log(data);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+      .then((data) => {
+        this.next = data['next_page_url']
+        console.log(this.next)
+        if (this.next == null) {
+          this.noMore = true;
+        }
+        this.questions = data['data'];
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
   up(question) {
     this.questionsService.up(question.id, this.service.getToken())
-    .then((data)=>{
-      if (!data['error']) {
-        question.votes++;
-      } else {
-        this.showAlert(data['state']);
-      }
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
+      .then((data) => {
+        if (!data['error']) {
+          question.votes++;
+        } else {
+          this.showAlert(data['state']);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   down(question) {
     this.questionsService.down(question.id, this.service.getToken())
-    .then((data)=>{
-      if (!data['error']) {
-        question.votes--;
-      } else {
-        this.showAlert(data['state']);
-      }
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
+      .then((data) => {
+        if (!data['error']) {
+          question.votes--;
+        } else {
+          this.showAlert(data['state']);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   goToQuestion(question) {
-    this.navCtrl.push(QuestionPage,{
+    this.navCtrl.push(QuestionPage, {
       question: question
     })
-    console.log("IN HOME PAGE"+question);
-    console.log("Question");
   }
 
   doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
@@ -112,19 +108,19 @@ export class Home {
     });
     alert.present();
   }
-  more(){
+  more() {
     this.userService.moreHomeConetent(this.next, this.service.getToken())
-    .then((data)=>{
-      this.next = data['next_page_url'];
-      if (this.next == null) {
-        this.noMore = true;
-      }
-      this.questions = this.questions.concat(data['data']);
+      .then((data) => {
+        this.next = data['next_page_url'];
+        if (this.next == null) {
+          this.noMore = true;
+        }
+        this.questions = this.questions.concat(data['data']);
 
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
   }
 

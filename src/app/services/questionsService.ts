@@ -25,8 +25,8 @@ export class QuestionsService {
     })
   }
 
-  getQuestions(course_id) : Promise<any>{
-    return new Promise((resolve, reject)=>{
+  getQuestions(course_id): Promise<any> {
+    return new Promise((resolve, reject) => {
       let headers1 = new Headers();
       headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
 
@@ -40,8 +40,8 @@ export class QuestionsService {
     })
   }
 
-  more(url){
-    return new Promise((resolve, reject)=>{
+  more(url) {
+    return new Promise((resolve, reject) => {
       let headers1 = new Headers();
       headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
 
@@ -56,8 +56,8 @@ export class QuestionsService {
     })
   }
 
-  up(question_id,token){
-    return new Promise((resolve, reject)=>{
+  up(question_id, token) {
+    return new Promise((resolve, reject) => {
       let headers1 = new Headers();
 
       headers1.append('x-access-token', token);
@@ -72,8 +72,8 @@ export class QuestionsService {
     })
   }
 
-  down(question_id, token){
-    return new Promise((resolve, reject)=>{
+  down(question_id, token) {
+    return new Promise((resolve, reject) => {
       let headers1 = new Headers();
 
       headers1.append('x-access-token', token);
@@ -86,5 +86,72 @@ export class QuestionsService {
           reject(err);
         });
     })
+  }
+
+  askQuestion(token, course_id, question) {
+    return new Promise((resolve, reject) => {
+      let headers1 = new Headers();
+      headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
+      headers1.append('x-access-token', token);
+      var url = config.server + 'api/v1/browse/' + course_id;
+      let data = { question: question };
+      this.http.post(url, data, { headers: headers1 }).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          reject(err);
+        });
+    });
+  }
+
+  getCourses(major_id, semester) {
+
+    return new Promise((resolve, reject) => {
+      let headers1 = new Headers();
+      headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
+
+      var url = config.server + 'api/v1/list_courses/' + major_id + '/' + semester;
+
+      this.http.get(url).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          reject(err);
+        });
+    });
+
+  }
+
+  getMajors() {
+    return new Promise((resolve, reject) => {
+      let headers1 = new Headers();
+      headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
+      var url = config.server + 'api/v1/browse/';
+
+      this.http.get(url).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          reject(err);
+        });
+    });
+  }
+
+  postAnswer(token, question_id, answer) {
+    return new Promise((resolve, reject) => {
+      let headers1 = new Headers();
+      headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
+      headers1.append('x-access-token', token);
+      var url = config.server + 'api/v1/answers/' + question_id;
+      console.log(url);
+      console.log(headers1)
+      let data = { answer: answer };
+      this.http.post(url, data, { headers: headers1 }).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          resolve(err);
+        });
+    });
   }
 }
