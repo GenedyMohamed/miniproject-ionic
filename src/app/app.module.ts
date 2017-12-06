@@ -1,6 +1,17 @@
+// Native modules goes here
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { Http } from '@angular/http'
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
+//Ionic native plugins goes here
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+
+// Pages goes here
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { Home } from '../pages/home/home';
@@ -11,14 +22,19 @@ import { Profile } from '../pages/profile/profile';
 import { Majors } from '../pages/majors/majors';
 import { Semester } from '../pages/semester/semester';
 import {Courses} from '../pages/courses/courses';
-import { Service } from './service';
-import { JwtHelper } from 'angular2-jwt';
 import { Questions } from '../pages/questions/questions';
 import { Add } from '../pages/add/add';
 import { SubscribePage} from '../pages/subscribe/subscribe'
-import { StatusBar } from '@ionic-native/status-bar';
 import { QuestionPage } from '../pages/question/question'
 import { PostAnswerPage } from '../pages/post-answer/post-answer'
+
+// Services goes here
+import { Service } from './service';
+import { QuestionsService } from './services/questionsService';
+import { UserService } from './services/userService'
+
+// Any helper libraries
+import { JwtHelper } from 'angular2-jwt';
 
 @NgModule({
   declarations: [
@@ -40,6 +56,9 @@ import { PostAnswerPage } from '../pages/post-answer/post-answer'
     PostAnswerPage
   ],
   imports: [
+    BrowserModule,
+    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -61,6 +80,7 @@ import { PostAnswerPage } from '../pages/post-answer/post-answer'
     QuestionPage,
     PostAnswerPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,JwtHelper,StatusBar]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,JwtHelper, StatusBar,
+  SplashScreen,HttpModule]
 })
 export class AppModule {}

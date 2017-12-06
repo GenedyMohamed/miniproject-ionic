@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { Login } from '../login/login';
 import {Service} from '../../app/service';
+import { UserService } from '../../app/services/userService'
+import { QuestionsService } from '../../app/services/questionsService'
 import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,7 +20,7 @@ export class Home {
   questions: any[] = [];
   next: string;
   noMore: boolean;
-  constructor(public navCtrl: NavController, public service: Service, private http: Http, private alertCtrl: AlertController,public statusBar: StatusBar) {
+  constructor(public navCtrl: NavController, public service: Service,public questionsService: QuestionsService,public userService: UserService ,private http: Http, private alertCtrl: AlertController,public statusBar: StatusBar) {
     this.statusBar.backgroundColorByHexString('#FF7043');
     this.reload();
   }
@@ -42,58 +44,46 @@ export class Home {
     this.reload();
   }
   getContent() {
-    let headers1 = new Headers();
-    headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
-    headers1.append('x-access-token', this.service.getToken());
-    var url = config.server+'api/v1/home';
-
-    this.http.get(url, { headers: headers1 }).map(res => res.json()).subscribe(data => {
-      this.next = data.next_page_url
+    this.userService.getHomeConetent(this.service.getToken())
+    .then((data)=>{
+      this.next = data['next_page_url']
+      console.log(this.next)
       if (this.next == null) {
         this.noMore = true;
       }
-      this.questions = data.data;
+      this.questions = data['data'];
       console.log(data);
-    },
-      err => {
-        console.log(err);
-      });
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
   up(question) {
-    let headers1 = new Headers();
-
-    headers1.append('x-access-token', this.service.getToken());
-    var url = config.server+"api/v1/vote/question/" + question.id + "/0";
-
-    this.http.get(url, { headers: headers1 }).map(res => res.json()).subscribe(data => {
-
-      if (!data.error) {
+    this.questionsService.up(question.id, this.service.getToken())
+    .then((data)=>{
+      if (!data['error']) {
         question.votes++;
       } else {
-        this.showAlert(data.state);
+        this.showAlert(data['state']);
       }
-    },
-      err => {
-        console.log(err);
-      });
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
   }
 
   down(question) {
-    let headers1 = new Headers();
-
-    headers1.append('x-access-token', this.service.getToken());
-    var url = config.server+"api/v1/vote/question/" + question.id + "/1";
-
-    this.http.get(url, { headers: headers1 }).map(res => res.json()).subscribe(data => {
-      if (!data.error) {
+    this.questionsService.down(question.id, this.service.getToken())
+    .then((data)=>{
+      if (!data['error']) {
         question.votes--;
       } else {
-        this.showAlert(data.state);
+        this.showAlert(data['state']);
       }
-    },
-      err => {
-        console.log(err);
-      });
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
   }
 
   goToQuestion(question) {
@@ -123,24 +113,19 @@ export class Home {
     alert.present();
   }
   more(){
-    let headers1 = new Headers();
-    headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
-      headers1.append('x-access-token', this.service.getToken());
-    var url = config.server + this.next;
-    console.log(headers1);
-    console.log(url)
-    this.http.get(url,{headers: headers1}).map(res => res.json()).subscribe(data => {
-      console.log(data);
-      this.next = data.next_page_url;
+    this.userService.moreHomeConetent(this.next, this.service.getToken())
+    .then((data)=>{
+      this.next = data['next_page_url'];
       if (this.next == null) {
         this.noMore = true;
       }
-      this.questions = this.questions.concat(data.data);
-      console.log(this.questions);
-    },
-      err => {
-        console.log(err);
-      });
+      this.questions = this.questions.concat(data['data']);
+
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+
   }
 
 
