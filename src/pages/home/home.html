@@ -14,7 +14,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <!-- If a guest -->
-  <div *ngIf='!isAuth'>
+  <div *ngIf='!isAuth' style="padding: 10px">
     <h1>Welcome aboard</h1>
     <h3>AskAfellow</h3>
     <p>
@@ -22,6 +22,7 @@
     </p>
 
   </div>
+
   <!-- If a user -->
   <div *ngIf='isAuth'>
 

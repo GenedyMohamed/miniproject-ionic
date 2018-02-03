@@ -1,0 +1,161 @@
+<!--
+  Generated template for the StoredetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Store Name</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style=" background-color: #e3e8ef;">
+
+    <div style="padding: 10px">
+        <div style="font-size: 26px;font-weight: 20px">Store Name</div>
+        <div style="font-size: 18px"> Category</div>
+        <div style="text-align: right;font-size: 25px;color: black"><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star-half"></ion-icon> <ion-icon name="star-outline"></ion-icon> <ion-icon name="star-outline"></ion-icon></div>
+        
+        <div style="width:60px;height: 60px"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.7489979280795!2d31.439227750232074!3d29.98664272816799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583cb2bfafbe73%3A0x6e7220116094726d!2sGUC+(German+University+in+Cairo)!5e0!3m2!1sen!2seg!4v1516639623151" width="290" height="200" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+        <br><br><br><br><br><br><br><br>
+        <div style="font-size: 18px;"> Description</div>
+        <div style="font-size: 14px"> Lorem ipsum dolor sit amet. consecteture adipiscing elit.</div>
+        <p style="font-size: 18px"> Reviews</p>
+
+        <div>
+         <ion-list >
+  <ion-item style="background: transparent;">
+        <div style=" background: grey ;position: absolute; border-radius: 20px;font-size: 30px ;width:40px ; height: 40px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>
+        <div style="padding-left: 50px">
+           <div style="font-size: 16px"> Reviewer Name</div>
+           <div ><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star-half"></ion-icon> <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></div>
+           <div style="font-size: 14px"> Review content ............</div>
+        </div>
+  </ion-item>
+
+  <ion-item style="background: transparent;">
+        <div style=" background: grey ;position: absolute; border-radius: 20px;font-size: 30px ;width:40px ; height: 40px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>
+        <div style="padding-left: 50px">
+           <div style="font-size: 16px"> Reviewer Name</div>
+           <div ><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star-half"></ion-icon> <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></div>
+           <div style="font-size: 14px"> Review content ............</div>
+        </div>
+  </ion-item>
+
+  <ion-item style="background: transparent;">
+        <div style=" background: grey ;position: absolute; border-radius: 20px;font-size: 30px ;width:40px ; height: 40px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>
+        <div style="padding-left: 50px">
+           <div style="font-size: 16px"> Reviewer Name</div>
+           <div ><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star-half"></ion-icon> <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></div>
+           <div style="font-size: 14px"> Review content ............</div>
+        </div>
+  </ion-item>
+
+</ion-list>
+        </div>
+
+            <div  style="font-size:70px;background-color:#e3e8ef; ;border-radius:500px ;position: fixed;top:455px;right:40px ;color:#e3e8ef;width: 50px;height: 60px"></div>
+        
+          <button #add title="Rate the Store and add a comment" style="font-size:70px; background-color: transparent;border-radius: 50px ;position: fixed;top:440px;right:20px ;color:#159DE7;" (click)="show(popup);hide(add);show(close);;hide(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);hide(fullstar1)"> <ion-icon name="md-add-circle"></ion-icon> </button>
+
+           
+          
+
+    </div>
+
+
+    <div #popup  style="background:rgba(64, 64, 64,0.8); position: fixed;top:60px;left: 0px;width:308px;height:468px ;display: none;">
+
+
+      
+      <div  (click)="hide(popup)" >  </div>
+
+      <div  style="font-size:70px;background-color:#e3e8ef; ;border-radius:500px ;position: fixed;top:455px;right:40px ;color:#e3e8ef;width: 50px;height: 60px"></div>
+
+      <button #close title="Cancel" style=";display: none;font-size:70px;background-color:transparent; ;border-radius:60px ;position: fixed;top:440px;right:20px ;color:#159DE7;" (click)="hide(popup);hide(close);show(add)"> <ion-icon name="md-close-circle"></ion-icon> </button>
+  
+        
+    
+
+      <div #rate  style="background: #e3e8ef;width: 270px; height:300px;border-radius: 50px; position: fixed;top: 120px;left: 18px ; display: block;">
+          
+        <div style="font-size: 50px;background: grey ;position: fixed ; top:100px ;left: 130px ; border-radius: 60px;width:60px ; height: 60px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>  
+
+        <br>
+        <div style="display: none;text-align: center;font-size: 30px"> Review</div>
+        <br>
+        <div style="font-size: 20px;position: fixed;top: 170px ;left: 100px"> Rate this store </div>
+        <br>
+
+
+        <div  style="position: fixed;font-size: 30px;top: 205px; left:30px"> <button class="oneStar"                                                       (click)="show(fullstar1);hide(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5)"    (dblclick)="show(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);hide(fullstar1);hide(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);" (mouseleave)="black(star1);" (mouseover)="orange(star1);" style="background:transparent; font-size:40px ; width: 40px ; height:40px" #star1 > <ion-icon  name="md-star-outline"></ion-icon></button><button class="twoStar"  (click)="show(fullstar1);show(fullstar2);hide(halfstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"   (dblclick)="hide(halfstar1);show(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);show(fullstar1);hide(fullstar2);hide(halfstar3);hide(fullstar4);hide(fullstar5)" (mouseleave)="black(star1);black(star2);" (mouseover)="orange(star1);orange(star2);" style="background:transparent;font-size:40px; width: 40px; height:40px" #star2> <ion-icon  name="md-star-outline"></ion-icon></button><button class="threeStar"                                                                                                                                       (click)="show(fullstar1);show(fullstar2);show(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"      (dblclick)="show(fullstar1);show(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);show(halfstar3);hide(halfstar4);hide(halfstar5);" (mouseleave)="black(star1);black(star2);black(star3);" (mouseover)="orange(star1);orange(star2);orange(star3);" style="background:transparent;font-size:40px;width: 40px; height:40px" #star3> <ion-icon  name="md-star-outline"></ion-icon></button><button class="fourStar"                                                                                      (click)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"      (dblclick)="show(fullstar1);show(fullstar2);show(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);show(halfstar4);hide(halfstar5);" (mouseleave)="black(star1);black(star2);black(star3);black(star4);" (mouseover)="orange(star1);orange(star2);orange(star3);orange(star4);"  style="background:transparent;font-size:40px;width: 40px; height:40px" #star4> <ion-icon  name="md-star-outline"></ion-icon></button><button class="fiveStar"                                                             (click)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);show(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"         (dblclick)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);show(halfstar5);" (mouseleave)="black(star1);black(star2);black(star3);black(star4);black(star5)" (mouseover)="orange(star1);orange(star2);orange(star3);orange(star4);orange(star5)" style="background:transparent;font-size:40px;width: 40px;height:40px" #star5> <ion-icon  name="md-star-outline"></ion-icon></button>
+        </div>
+
+
+
+
+         
+        <button (click)="show(fullstar1);hide(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5)"     (dblclick)="show(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);hide(fullstar1);hide(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);" style="background:transparent;display: none;color:#ff3300 ; font-size:30px ; width: 40px ; height:40px;position: fixed;font-size: 40px;top: 205px; left: 30px" #fullstar1> <ion-icon  name="star"></ion-icon></button>
+
+        <button (click)="show(fullstar1);show(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"    (dblclick)="hide(halfstar1);show(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);show(fullstar1);hide(fullstar2);hide(halfstar3);hide(fullstar4);hide(fullstar5)" style="background:transparent;display: none;color:#ff3300 ;font-size:30px; width: 40px; height:40px;position: fixed;font-size: 40px;top: 205px; left: 70px" #fullstar2> <ion-icon  name="star"></ion-icon></button>
+
+        <button (click)="show(fullstar1);show(fullstar2);show(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"    (dblclick)="show(fullstar1);show(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);show(halfstar3);hide(halfstar4);hide(halfstar5);" style="background:transparent;display: none;color:#ff3300 ;font-size:30px;width: 40px; height:40px;position: fixed;font-size: 40px;top: 205px; left: 110px" #fullstar3> <ion-icon  name="star"></ion-icon></button>
+
+        <button (click)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"    (dblclick)="show(fullstar1);show(fullstar2);show(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);show(halfstar4);hide(halfstar5);" style="background:transparent;display: none;color:#ff3300 ;font-size:30px;width: 40px; height:40px;position: fixed;font-size: 40px;top: 205px; left: 150px" #fullstar4> <ion-icon  name="star"></ion-icon></button>
+
+        <button (click)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);show(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"     (dblclick)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);show(halfstar5);" (click)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);show(fullstar5)"  style="background:transparent;display: none;color:#ff3300 ;font-size:30px;width: 40px;height:40px;position: fixed;font-size: 40px;top: 205px; left: 190px" #fullstar5> <ion-icon  name="star"></ion-icon></button>
+
+
+
+
+
+
+
+        <button (click)="show(fullstar1);hide(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5)"         (dblclick)="show(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);hide(fullstar1);hide(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);" style="background:transparent;display:none;color:#ff3300 ; font-size:40px ; width: 40px ; height:40px;position: fixed;top: 205px; left: 30px" #halfstar1> <ion-icon  name="ios-star-half-outline"></ion-icon></button>
+
+        <button (click)="show(fullstar1);show(fullstar2);hide(halfstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"        (dblclick)="hide(halfstar1);show(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);show(fullstar1);hide(fullstar2);hide(halfstar3);hide(fullstar4);hide(fullstar5)" style="background:transparent;display: none;color:#ff3300 ;font-size:40px; width: 40px; height:40px;position: fixed;top: 205px; left: 70px" #halfstar2> <ion-icon  name="ios-star-half-outline"></ion-icon></button>
+
+        <button (click)="show(fullstar1);show(fullstar2);show(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"        (dblclick)="show(fullstar1);show(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);show(halfstar3);hide(halfstar4);hide(halfstar5);" style="background:transparent;display: none;color:#ff3300 ;font-size:40px;width: 40px; height:40px;position: fixed;top: 205px; left: 110px" #halfstar3> <ion-icon  name="ios-star-half-outline"></ion-icon></button>
+
+        <button (click)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"         (dblclick)="show(fullstar1);show(fullstar2);show(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);show(halfstar4);hide(halfstar5);"  style="background:transparent;display: none;color:#ff3300 ;font-size:40px;width: 40px; height:40px;position: fixed;top: 205px; left: 150px" #halfstar4> <ion-icon  name="ios-star-half-outline"></ion-icon></button>
+
+        <button (click)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);show(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);"         (dblclick)="show(fullstar1);show(fullstar2);show(fullstar3);show(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);show(halfstar5);"  style="background:transparent;display: none;color:#ff3300 ;font-size:40px;width: 40px;height:40px;position: fixed;top: 205px; left: 190px" #halfstar5> <ion-icon  name="ios-star-half-outline"></ion-icon></button>
+       
+        
+        <button title="info" (mouseover)="show(info);hide(add);show(close);hide(fullstar2);hide(fullstar3);hide(fullstar4);hide(fullstar5);hide(halfstar1);hide(halfstar2);hide(halfstar3);hide(halfstar4);hide(halfstar5);hide(fullstar1)" (mouseleave)="hide(info)" style="background-color: transparent ;font-size:30px;position: fixed;top: 215px;left:240px;color:#ff751a"><ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></button>
+        
+        <div #info style="width:210px;height: 40px;background-color:#ff751a;border-radius: 50px ; position: fixed;top:210px;left:31px; text-align: center;font-size: 15px;color: white ; display: none">Click to rate full-star <br> Double click to rate half-star </div>
+
+        <form style="position: fixed;top: 240px ;left: 30px"> 
+          <div style="font-size:20px;position: fixed;top: 255px ;left: 80px"> Write a comment </div>
+          <br>
+          <input type="placeholder" name="comment" placeholder="write your comment"  style="width: 230px ; height: 60px ;position: fixed;top:290px;left: 40px">
+        </form>
+           
+          <ion-list  style="position: fixed;top: 368px ; left: 20px" >
+
+          <ion-item #send title="Send" style="background-color: transparent;text-align: center;">  <button  (click)="check(fullstar1,halfstar1,popup,add)" style="background-color: transparent;color:#ff751a ;font-size: 20px;width:235px;height:30px"> Send  </button>    </ion-item>
+
+          </ion-list>
+        
+    </div>
+    
+    </div> 
+
+    <style type="text/css">
+     
+
+    </style>
+
+    <script type="text/javascript">
+      
+      
+
+    
+    </script>
+
+</ion-content>
