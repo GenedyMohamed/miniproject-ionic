@@ -27,6 +27,7 @@ import { Add } from '../pages/add/add';
 import { SubscribePage} from '../pages/subscribe/subscribe'
 import { QuestionPage } from '../pages/question/question'
 import { PostAnswerPage } from '../pages/post-answer/post-answer'
+import { ComponentDetailsPage } from '../pages/component-details/component-details'
 
 // Services goes here
 import { Service } from './service';
@@ -53,7 +54,8 @@ import { JwtHelper } from 'angular2-jwt';
     Add,
     SubscribePage,
     QuestionPage,
-    PostAnswerPage
+    PostAnswerPage,
+    ComponentDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { JwtHelper } from 'angular2-jwt';
     Add,
     SubscribePage,
     QuestionPage,
-    PostAnswerPage
+    PostAnswerPage,
+    ComponentDetailsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,JwtHelper, StatusBar,
   SplashScreen,HttpModule]
