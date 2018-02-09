@@ -8,6 +8,7 @@ import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { QuestionPage } from '../question/question'
+import { StoredetailsPage } from '../storedetails/storedetails';
 import * as config from '../../app/config.json';
 
 
@@ -40,6 +41,11 @@ export class Home {
     //this.navCtrl.pop();
     //console.log('test');
   }
+
+  goToStore(){
+       this.navCtrl.push(StoredetailsPage);
+  } 
+
   ionViewDidEnter() {
     this.reload();
   }

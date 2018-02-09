@@ -24,10 +24,11 @@ import { Semester } from '../pages/semester/semester';
 import {Courses} from '../pages/courses/courses';
 import { Questions } from '../pages/questions/questions';
 import { Add } from '../pages/add/add';
-import { SubscribePage} from '../pages/subscribe/subscribe'
-import { QuestionPage } from '../pages/question/question'
-import { PostAnswerPage } from '../pages/post-answer/post-answer'
-import { ComponentDetailsPage } from '../pages/component-details/component-details'
+import { SubscribePage} from '../pages/subscribe/subscribe';
+import { QuestionPage } from '../pages/question/question';
+import { PostAnswerPage } from '../pages/post-answer/post-answer';
+import { StoredetailsPage } from '../pages/storedetails/storedetails';
+import { ComponentDetailsPage } from '../pages/component-details/component-details';
 
 // Services goes here
 import { Service } from './service';
@@ -55,6 +56,7 @@ import { JwtHelper } from 'angular2-jwt';
     SubscribePage,
     QuestionPage,
     PostAnswerPage,
+    StoredetailsPage,
     ComponentDetailsPage
   ],
   imports: [
@@ -81,6 +83,7 @@ import { JwtHelper } from 'angular2-jwt';
     SubscribePage,
     QuestionPage,
     PostAnswerPage,
+    StoredetailsPage,
     ComponentDetailsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,JwtHelper, StatusBar,
