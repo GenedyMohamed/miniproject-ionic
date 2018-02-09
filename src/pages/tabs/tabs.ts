@@ -4,7 +4,9 @@ import { Home } from '../home/home';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { Majors } from '../majors/majors';
-import { SubscribePage} from '../subscribe/subscribe';
+import { SubscribePage } from '../subscribe/subscribe';
+import { ViewComponentsPage } from '../view-components/view-components';
+
 
 @Component({
   templateUrl: 'tabs.html'
@@ -17,8 +19,11 @@ export class TabsPage {
   tab3Root: any = ContactPage;
   tab4Root: any = Majors;
   tab5Root: any = SubscribePage;
+  tab6Root: any = ViewComponentsPage;
+
 
   constructor() {
+    
 
   }
 }
