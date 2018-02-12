@@ -5,6 +5,9 @@ import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { Majors } from '../majors/majors';
 import { SubscribePage} from '../subscribe/subscribe';
+import { StoredetailsPage } from '../storedetails/storedetails';
+import { ComponentDetailsPage } from '../component-details/component-details';
+import { ViewComponentsPage } from '../view-components/view-components';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -17,8 +20,11 @@ export class TabsPage {
   tab3Root: any = ContactPage;
   tab4Root: any = Majors;
   tab5Root: any = SubscribePage;
-
+  tab6Root: any = StoredetailsPage;
+  tab7Root: any = ComponentDetailsPage;
+  tab8Root: any = ViewComponentsPage;
   constructor() {
+    
 
   }
 }
