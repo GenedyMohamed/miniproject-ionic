@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Upcoming Events
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+ 
+  <ion-list #scheduleList [hidden]="shownSessions === 0">
+
+    <ion-item-group *ngFor="let group of groups">
+
+      <ion-item-divider sticky>
+        
+        <ion-label>
+            <ion-icon name="md-calendar"></ion-icon>
+          {{group.date}}
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-sliding *ngFor="let event of group.events" class="left-bar" ion-label>
+
+        <button ion-item (click)="goToEventDetail(event)" >
+          <h3>{{event.name}}</h3>
+          <p>
+            {{event.timeStart}} &mdash;
+            {{event.timeEnd}}:
+            {{event.location}}
+          </p>
+        </button>
+
+       
+
+      </ion-item-sliding>
+
+    </ion-item-group>
+
+  </ion-list>
+
+
+</ion-content>
