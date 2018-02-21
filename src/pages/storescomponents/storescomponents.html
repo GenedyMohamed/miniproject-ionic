@@ -16,7 +16,7 @@
 <ion-content style=" background-color: #e3e8ef;">
   
 	<div padding>
-  <ion-segment style="" [(ngModel)]="StoresAndComponents">
+  <ion-segment style="position: fixed;width:300px;left:4px" [(ngModel)]="StoresAndComponents" >
     <ion-segment-button value="Stroes">
       Stroes
     </ion-segment-button>
@@ -26,13 +26,15 @@
   </ion-segment>
 </div>
 
-<div style="padding-top: 0px;padding-left: 15px;padding-right: 15px" [ngSwitch]="StoresAndComponents">
+<div style="padding-top: 0px;padding-left: 15px;padding-right: 15px;" [ngSwitch]="StoresAndComponents">
   <ion-list  *ngSwitchCase="'Stroes'" >
-  	<form style="padding-left:5px;padding-bottom: 20px">
+  	<div>
+  	<form style="padding-left:5px;padding-bottom: 20px;position: fixed;padding-top: 30px">
     	<input placeholder="Search..." style="width: 270px;height: 30px;border-radius: 50px" >
     	<button title="Search" style="background:white ;position: relative;top:-27px;left:230px;width:40px;height:25px ;border-radius: 50px;text-align: center;font-size: 20px "><ion-icon ios="ios-search" md="md-search"></ion-icon></button>
     </form>
-    <button (click)="goToStore()" style="background: transparent;padding: 0px">
+    <div style="padding-top: 20px">
+    <button (click)="goToStore()" style="background: transparent;padding: 0px;padding-top: 50px">
     	<ion-item style="background: transparent;">
         <div style=" background: grey ;position: absolute; border-radius: 100px;font-size: 50px ;width:60px ; height: 60px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>
         <div style="padding-left: 70px">
@@ -72,15 +74,16 @@
         </div>
     	</ion-item>    
   </button>
-
-    
+  </div>
+    </div>
   </ion-list>
 
   <ion-list *ngSwitchCase="'Components'"  >
-  	<form style="padding-left:5px;padding-bottom: 20px">
+  	<form style="padding-left:5px;padding-bottom: 20px;position: fixed;padding-top: 30px">
     	<input placeholder="Search..." style="width: 270px;height: 30px;border-radius: 50px" >
     	<button title="Search" style="background:white ;position: relative;top:-27px;left:230px;width:40px;height:25px ;border-radius: 50px;text-align: center;font-size: 20px "><ion-icon ios="ios-search" md="md-search"></ion-icon></button>
     </form>
+    <div style="padding-top: 70px">
     <ion-item style="background: transparent;">
         <div style=" background: grey ; border-radius: 100px;position:absolute; font-size: 50px ;width:60px ; height: 60px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>
         <div style="padding-left: 70px">
@@ -117,7 +120,7 @@
            <div style="font-size: 10px;padding-left:130px"> Post Time </div>
         </div>
   </ion-item>
-
+  </div>
     
   </ion-list>
 </div>
