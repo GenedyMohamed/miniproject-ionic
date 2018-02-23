@@ -29,9 +29,9 @@ import { QuestionPage } from '../pages/question/question';
 import { PostAnswerPage } from '../pages/post-answer/post-answer';
 import { EventsPage } from '../pages/events/events';
 import { StoredetailsPage } from '../pages/storedetails/storedetails';
+import { StorescomponentsPage } from '../pages/storescomponents/storescomponents';
 import { ComponentDetailsPage } from '../pages/component-details/component-details';
 import { ViewComponentsPage } from '../pages/view-components/view-components';
-
 
 // Services goes here
 import { Service } from './service';
@@ -60,8 +60,9 @@ import { JwtHelper } from 'angular2-jwt';
     SubscribePage,
     QuestionPage,
     PostAnswerPage,
-    EventsPage,
     StoredetailsPage,
+    StorescomponentsPage,
+    EventsPage,
     ComponentDetailsPage,
     ViewComponentsPage
   ],
@@ -89,8 +90,9 @@ import { JwtHelper } from 'angular2-jwt';
     SubscribePage,
     QuestionPage,
     PostAnswerPage,
-    EventsPage,
     StoredetailsPage,
+    StorescomponentsPage,
+    EventsPage,
     ComponentDetailsPage,
     ViewComponentsPage
   ],
