@@ -1,0 +1,151 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Course Name
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div padding>
+  <ion-segment class="ion-header center" style="width:300px;padding-right: 20px" [(ngModel)]="EventsQuestionsNotes" >
+    <ion-segment-button value="Events">
+      Events
+    </ion-segment-button>
+    <ion-segment-button value="Questions">
+      Questions
+    </ion-segment-button>
+    <ion-segment-button value="Notes">
+      Notes
+    </ion-segment-button>
+  </ion-segment>
+  </div>
+
+  <div style="padding-top: 0px;padding-left: 15px;padding-right: 15px;" [ngSwitch]="EventsQuestionsNotes">
+
+  <div *ngSwitchCase="'Events'">
+ 
+  <ion-list #scheduleList [hidden]="shownSessions === 0">
+
+    <ion-item-group *ngFor="let group of groups">
+
+      <ion-item-divider sticky>
+        
+        <ion-label>
+            <ion-icon name="md-calendar"></ion-icon>
+          {{group.date}}
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-sliding *ngFor="let event of group.events" class="left-bar" ion-label>
+
+        <button ion-item (click)="goToEventDetail(event)" >
+          <h3>{{event.name}}</h3>
+          <p>
+            {{event.timeStart}} &mdash;
+            {{event.timeEnd}}:
+            {{event.location}}
+          </p>
+        </button>
+
+      </ion-item-sliding>
+
+    </ion-item-group>
+
+  </ion-list>
+  </div>
+
+  <div *ngSwitchCase="'Questions'">
+  <ion-list no-lines >
+
+    Questions
+    <!-- <ion-item>
+        <ion-label fixed>Ask a question</ion-label>
+        <ion-input type="text" value=""  [(ngModel)]="question.body"></ion-input>
+    </ion-item>
+    <button ion-button clear>Primary Clear</button> -->
+
+    <ion-card *ngFor="let question of questions" class="speaker-card">
+      <div (click)="goToQuestion(question)">
+      <ion-item>
+        <ion-avatar item-left *ngIf='question.asker[0].profile_picture == ""'>
+          <img src="{{" assets/img/default.png"}}">
+        </ion-avatar>
+        <ion-avatar item-left *ngIf='question.asker[0].profile_picture != ""'>
+
+          <img src="{{question.asker[0].profile_picture}}">
+        </ion-avatar>
+        <h2>{{question.asker[0].first_name}}
+          {{question.asker[0].last_name}}</h2>
+        <p>{{question.created_at | date:'yyyy-MM-dd'}}</p>
+        <ion-badge item-right>
+          {{question.votes}}
+          Votes</ion-badge>
+      </ion-item>
+
+      <ion-card-content>
+        <p>
+          {{question.question}}
+        </p>
+      </ion-card-content>
+    </div>
+      <ion-row>
+        <ion-col center text-center  col-4 >
+          <button ion-button icon-left clear small [disabled]="!isAuth" (click)="up(question)">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>Vote up</div>
+          </button>
+
+        </ion-col>
+        <ion-col center text-center  col-4>
+          <button ion-button icon-left clear small (click)="goToQuestion(question)">
+            <ion-icon name="text"></ion-icon>
+            <div>{{question.count_answers}}
+              Answers</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center  col-3>
+          <button ion-button icon-left clear small [disabled]="!isAuth" (click)="down(question)">
+            <ion-icon name="thumbs-down"></ion-icon>
+            <div>Vote down</div>
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+
+  </ion-list>
+
+  <div class="center">
+
+    <button ion-button clear [disabled]="noMore" (click)="more()">show more questions</button>
+  </div>
+  <ion-fab right bottom>
+
+    <button ion-fab color="primary" [disabled]="!isAuth" (click)="add()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  </div>
+
+  <div *ngSwitchCase="'Notes'">
+  <ion-list no-lines>
+
+  <ion-item style="background: transparent;">
+        <div style=" background: grey ; border-radius: 100px;position:absolute; font-size: 50px ;width:60px ; height: 60px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>
+        <div style="padding-left: 70px">
+           <div style="font-size: 20px"> Notes Name</div>
+           <div style="font-size: 14px"> Posted by X </div>
+           <div style="font-size: 10px;padding-left:130px"> Post Time </div>
+        </div>
+  </ion-item>
+
+  </ion-list>
+
+  </div>
+  </div>
+
+</ion-content>
