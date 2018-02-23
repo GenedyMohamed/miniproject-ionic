@@ -132,15 +132,13 @@
   </div>
 
   <div *ngSwitchCase="'Notes'">
-  <ion-list no-lines>
-
-  <ion-item style="background: transparent;">
-        <div style=" background: grey ; border-radius: 100px;position:absolute; font-size: 50px ;width:60px ; height: 60px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>
-        <div style="padding-left: 70px">
-           <div style="font-size: 20px"> Notes Name</div>
-           <div style="font-size: 14px"> Posted by X </div>
-           <div style="font-size: 10px;padding-left:130px"> Post Time </div>
-        </div>
+  <ion-list>
+  <ion-item  *ngFor="let note of notes">
+      <ion-icon item-left name="paper"></ion-icon>
+      <h2>{{note.name}}</h2>
+      <h4>{{note.owner}}</h4>
+      <h4>{{note.postTime}}</h4>
+      <button item-right ion-button style="font-size: 12px">Download</button>
   </ion-item>
 
   </ion-list>

@@ -7,9 +7,8 @@ import { Majors } from '../majors/majors';
 import { SubscribePage} from '../subscribe/subscribe';
 import { StoredetailsPage } from '../storedetails/storedetails';
 import { StorescomponentsPage } from '../storescomponents/storescomponents';
-import { ComponentDetailsPage } from '../component-details/component-details';
-import { ViewComponentsPage } from '../view-components/view-components';
 import { Courses } from '../courses/courses';
+import { EventDetailsPage } from '../event-details/event-details';
 
 
 @Component({
@@ -25,8 +24,7 @@ export class TabsPage {
   tab4Root: any = Courses;
   tab5Root: any = SubscribePage;
   tab6Root: any = StorescomponentsPage;
-  tab7Root: any = ComponentDetailsPage;
-  tab8Root: any = ViewComponentsPage;
+  tab7Root: any = EventDetailsPage;
 
   constructor() {
     
