@@ -32,6 +32,8 @@ import { StoredetailsPage } from '../pages/storedetails/storedetails';
 import { StorescomponentsPage } from '../pages/storescomponents/storescomponents';
 import { ComponentDetailsPage } from '../pages/component-details/component-details';
 import { ViewComponentsPage } from '../pages/view-components/view-components';
+import { EventDetailsPage } from '../pages/event-details/event-details';
+
 
 // Services goes here
 import { Service } from './service';
@@ -64,7 +66,8 @@ import { JwtHelper } from 'angular2-jwt';
     StorescomponentsPage,
     EventsPage,
     ComponentDetailsPage,
-    ViewComponentsPage
+    ViewComponentsPage,
+    EventDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,8 @@ import { JwtHelper } from 'angular2-jwt';
     StorescomponentsPage,
     EventsPage,
     ComponentDetailsPage,
-    ViewComponentsPage
+    ViewComponentsPage,
+    EventDetailsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,EventsService,JwtHelper, StatusBar,
   SplashScreen,HttpModule]

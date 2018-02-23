@@ -8,6 +8,7 @@ import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import {Add} from '../add/add';
 import { QuestionPage } from '../question/question'
+import { EventDetailsPage } from '../event-details/event-details'
 import * as config from '../../app/config.json';
 
 /**
@@ -73,27 +74,37 @@ export class EventsPage {
   ];
   course: any = {};
   questions: any[] = [];
+  notes: Object[] = [];
   next: string;
   data: any;
   pp: string = "assets/img/default.png";
   question: any;
   isAuth: boolean;
   noMore: boolean;
+  EventsQuestionsNotes: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public eventsService: EventsService, public service: Service, public http: Http, public alertCtrl: AlertController, public events: Events, public questionsService: QuestionsService) {
 
-    this.EventsQuestionsNotes = "Events";
     this.course = navParams.get('course');
     console.log(this.course);
     this.isAuth = service.isAuthenticated();
     console.log(this.isAuth);
     this.getQuestions();
+    this.EventsQuestionsNotes = "Events";
+    this.getNotes();
   }
 
   ionViewDidLoad() {
     this.getQuestions();
     console.log('ionViewDidLoad EventsPage');
   }
+
+  goToEventDetail(event){
+    this.navCtrl.push(EventDetailsPage, {
+      event: event
+    })
+  }
+
 
   getQuestions() {
     this.questionsService.getQuestions(this.course.id)
@@ -167,6 +178,10 @@ export class EventsPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  getNotes(){
+    this.notes = [{"name": "Notes 1", "owner": "GUC", "postTime": "1 minute ago"}]
   }
 
 
