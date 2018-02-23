@@ -104,9 +104,30 @@ export class QuestionsService {
     });
   }
 
-  getCourses(major_id, semester) {
+  //getCourses(major_id, semester) {
+  getCourses() {
 
-    return new Promise((resolve, reject) => {
+    let courses = [
+      {
+        "course_name": "Course 1",
+        "course_code": "CSEN 101",
+        "Semester": 1,
+      },
+      {
+        "course_name": "Course 2",
+        "course_code": "CSEN 102",
+        "Semester": 1,
+      },
+      {
+        "course_name": "Course 3",
+        "course_code": "CSEN 103",
+        "Semester": 1,
+      }
+    ]
+
+    return courses;
+
+    /*new Promise((resolve, reject) => {
       let headers1 = new Headers();
       headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
 
@@ -118,7 +139,7 @@ export class QuestionsService {
         err => {
           reject(err);
         });
-    });
+    }); */
 
   }
 
