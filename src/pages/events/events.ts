@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Events} from 'ionic-angular';
 import { EventsService } from '../../app/services/eventsService';
-
+import { ModalController, NavParams } from 'ionic-angular';
 import {Service} from '../../app/service';
 import {QuestionsService} from '../../app/services/questionsService'
 import {Profile} from '../profile/profile';
@@ -83,7 +83,8 @@ export class EventsPage {
   noMore: boolean;
   EventsQuestionsNotes: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public eventsService: EventsService, public service: Service, public http: Http, public alertCtrl: AlertController, public events: Events, public questionsService: QuestionsService) {
+
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public eventsService: EventsService, public service: Service, public http: Http, public alertCtrl: AlertController, public events: Events, public questionsService: QuestionsService) {
 
     this.course = navParams.get('course');
     console.log(this.course);
@@ -92,6 +93,11 @@ export class EventsPage {
     this.getQuestions();
     this.EventsQuestionsNotes = "Events";
     this.getNotes();
+  }
+
+  openModal(){
+    var modalPage = this.modalCtrl.create('NewEventPage', {});
+    modalPage.present();
   }
 
   ionViewDidLoad() {

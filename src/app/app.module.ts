@@ -2,10 +2,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { Http } from '@angular/http'
+import { Http } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { NewEventPageModule } from '../pages/new-event/new-event.module';
+import { NewComponentQuestionPageModule } from '../pages/new-component-question/new-component-question.module';
 
 //Ionic native plugins goes here
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,7 +24,6 @@ import { Profile } from '../pages/profile/profile';
 import { Majors } from '../pages/majors/majors';
 import { Semester } from '../pages/semester/semester';
 import {Courses} from '../pages/courses/courses';
-import { Questions } from '../pages/questions/questions';
 import { Add } from '../pages/add/add';
 import { SubscribePage} from '../pages/subscribe/subscribe';
 import { QuestionPage } from '../pages/question/question';
@@ -31,9 +32,9 @@ import { EventsPage } from '../pages/events/events';
 import { StoredetailsPage } from '../pages/storedetails/storedetails';
 import { StorescomponentsPage } from '../pages/storescomponents/storescomponents';
 import { ComponentDetailsPage } from '../pages/component-details/component-details';
-import { ViewComponentsPage } from '../pages/view-components/view-components';
 import { EventDetailsPage } from '../pages/event-details/event-details';
-
+import { NewEventPage } from '../pages/new-event/new-event';
+import { NewComponentQuestionPage } from '../pages/new-component-question/new-component-question';
 
 // Services goes here
 import { Service } from './service';
@@ -57,7 +58,6 @@ import { JwtHelper } from 'angular2-jwt';
     Majors,
     Semester,
     Courses,
-    Questions,
     Add,
     SubscribePage,
     QuestionPage,
@@ -66,13 +66,14 @@ import { JwtHelper } from 'angular2-jwt';
     StorescomponentsPage,
     EventsPage,
     ComponentDetailsPage,
-    ViewComponentsPage,
     EventDetailsPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
+    NewEventPageModule,
+    NewComponentQuestionPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -88,7 +89,6 @@ import { JwtHelper } from 'angular2-jwt';
     Majors,
     Semester,
     Courses,
-    Questions,
     Add,
     SubscribePage,
     QuestionPage,
@@ -96,8 +96,9 @@ import { JwtHelper } from 'angular2-jwt';
     StoredetailsPage,
     StorescomponentsPage,
     EventsPage,
+    NewEventPage,
     ComponentDetailsPage,
-    ViewComponentsPage,
+    NewComponentQuestionPage,
     EventDetailsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,EventsService,JwtHelper, StatusBar,

@@ -16,13 +16,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class EventDetailsPage {
 
   data: any = {};
+  event: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-  	this.data = {
-  		rating : 1,
-    	max: 20
-  	}
+   this.event = this.navParams.get('event');
   }
 
   ionViewDidLoad() {
