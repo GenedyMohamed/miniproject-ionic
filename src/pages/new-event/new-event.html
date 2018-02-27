@@ -1,0 +1,49 @@
+<ion-header>
+
+<ion-navbar>
+    <ion-title>New Event</ion-title>
+    <ion-buttons end>
+    <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+	<ion-item>
+    	<ion-label floating>Event Title</ion-label>
+    	<ion-input type="text" [(ngModel)]="newEvent.title"></ion-input>
+  	</ion-item>
+ 
+  	<ion-item>
+    	<ion-label floating>Event Description</ion-label>
+    	<ion-input type="text" [(ngModel)]="newEvent.description"></ion-input>
+  	</ion-item>
+  
+  	<ion-item>
+    	<ion-label floating>Event Location</ion-label>
+    	<ion-input type="text" [(ngModel)]="newEvent.location"></ion-input>
+  	</ion-item>
+  	
+	<ion-item>
+  		<ion-label floating>Date</ion-label>
+  		<ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="newEvent.date"></ion-datetime>
+	</ion-item>	
+	
+	<ion-item>
+  		<ion-label floating>Start Time</ion-label>
+  		<ion-datetime displayFormat="H:MM" [(ngModel)]="newEvent.start"></ion-datetime>
+	</ion-item>	
+	
+	<ion-item>
+  		<ion-label floating>End Time</ion-label>
+  		<ion-datetime displayFormat="H:MM" [(ngModel)]="newEvent.end"></ion-datetime>
+	</ion-item>	
+	<br>
+	<div class="center">
+		<button ion-button round style (click)="createEvent()">Create Event</button>
+	</div>
+	
+
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+
+<ion-navbar>
+    <ion-title>Component Question</ion-title>
+    <ion-buttons end>
+    <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+	<ion-item>
+    	<ion-label floating>Question</ion-label>
+    	<ion-input type="text" [(ngModel)]="newQuestion.data"></ion-input>
+  	</ion-item>
+	<br>
+	<div class="center">
+		<button ion-button round style (click)="postQuestion()">Post Question</button>
+	</div>
+	
+
+</ion-content>

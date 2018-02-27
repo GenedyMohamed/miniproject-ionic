@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the ComponentDetailsPage page.
@@ -15,11 +16,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ComponentDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  component: any = {};
+
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+
+  	this.component = this.navParams.get('component');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComponentDetailsPage');
+  }
+
+  openModal(){
+    var modalPage = this.modalCtrl.create('NewComponentQuestionPage', {});
+    modalPage.present();
   }
 
 }

@@ -8,7 +8,6 @@ import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { QuestionPage } from '../question/question';
-import { StoredetailsPage } from '../storedetails/storedetails';
 import { StorescomponentsPage } from '../storescomponents/storescomponents';
 import * as config from '../../app/config.json';
 

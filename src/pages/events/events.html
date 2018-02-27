@@ -55,6 +55,7 @@
     </ion-item-group>
 
   </ion-list>
+  
   </div>
 
   <div *ngSwitchCase="'Questions'">
@@ -145,5 +146,10 @@
 
   </div>
   </div>
+
+  <ion-fab bottom right>
+    <button ion-fab color="dark" (click)="openModal()"><ion-icon name="md-add"></ion-icon></button>
+  </ion-fab>
+
 
 </ion-content>

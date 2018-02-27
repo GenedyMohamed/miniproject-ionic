@@ -19,16 +19,16 @@ import { LoadingController } from 'ionic-angular';
 })
 export class StoredetailsPage {
 
-   constructor(public alertCtrl: AlertController , public navCtrl: NavController,public loadingCtrl: LoadingController, public navParams: NavParams) {}
-  
+   store: any = {};
 
- 
+   constructor(public alertCtrl: AlertController , public navCtrl: NavController,public loadingCtrl: LoadingController, public navParams: NavParams) {
+
+      this.store = this.navParams.get('store');
+   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StoredetailsPage');
   }
-  
- 
 
  show(id){ 
        id.style.display = 'block';  
