@@ -41,9 +41,13 @@ import { Service } from './service';
 import { QuestionsService } from './services/questionsService';
 import { UserService } from './services/userService';
 import { EventsService } from './services/eventsService';
+import { StoresService } from './services/storesService';
+import { ComponentsService } from './services/componentsService';
+import { NotesService } from './services/notesService';
 
 // Any helper libraries
 import { JwtHelper } from 'angular2-jwt';
+
 
 @NgModule({
   declarations: [
@@ -102,6 +106,9 @@ import { JwtHelper } from 'angular2-jwt';
     EventDetailsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Service,QuestionsService,UserService,EventsService,JwtHelper, StatusBar,
-  SplashScreen,HttpModule]
+  SplashScreen,HttpModule,
+    StoresService,
+    ComponentsService,
+    NotesService]
 })
 export class AppModule {}
