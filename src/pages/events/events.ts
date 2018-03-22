@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Events} from 'ionic-angular';
 import { EventsService } from '../../app/services/eventsService';
-import { ModalController, NavParams } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import {Service} from '../../app/service';
 import {QuestionsService} from '../../app/services/questionsService'
 import {Profile} from '../profile/profile';
