@@ -32,14 +32,10 @@
 	</ion-item>	
 	
 	<ion-item>
-  		<ion-label floating>Start Time</ion-label>
-  		<ion-datetime displayFormat="H:MM" [(ngModel)]="newEvent.start"></ion-datetime>
+  		<ion-label floating>Time</ion-label>
+  		<ion-datetime displayFormat="H:MM" [(ngModel)]="newEvent.time"></ion-datetime>
 	</ion-item>	
 	
-	<ion-item>
-  		<ion-label floating>End Time</ion-label>
-  		<ion-datetime displayFormat="H:MM" [(ngModel)]="newEvent.end"></ion-datetime>
-	</ion-item>	
 	<br>
 	<div class="center">
 		<button ion-button round style (click)="createEvent()">Create Event</button>

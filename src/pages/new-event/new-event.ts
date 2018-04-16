@@ -16,7 +16,7 @@ import { ViewController } from 'ionic-angular';
 })
 export class NewEventPage {
 
-  newEvent = { title: "", description: "", location: "", date: "", start: "", end: "" };
+  newEvent = { title: "", description: "", location: "", date: "", time: "" };
   params: any;
 
   constructor(public navCtrl: NavController, public viewCtrl : ViewController ,public navParams: NavParams) {
