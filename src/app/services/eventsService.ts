@@ -23,4 +23,20 @@ export class EventsService {
         });
     });
   }
+
+  createEvent(token,course_id,event){
+    return new Promise((resolve, reject) => {
+      let headers1 = new Headers();
+      headers1.append('x-access-token', token);
+      headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
+      var url = config.server + 'api/v1/events/' + course_id;
+
+      this.http.post(url, event, { headers: headers1 }).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          reject(err);
+        });
+    });
+  }
 }

@@ -15,31 +15,31 @@
     	<ion-label floating>Event Title</ion-label>
     	<ion-input type="text" [(ngModel)]="newEvent.title"></ion-input>
   	</ion-item>
- 
+
   	<ion-item>
     	<ion-label floating>Event Description</ion-label>
     	<ion-input type="text" [(ngModel)]="newEvent.description"></ion-input>
   	</ion-item>
-  
+
   	<ion-item>
     	<ion-label floating>Event Location</ion-label>
-    	<ion-input type="text" [(ngModel)]="newEvent.location"></ion-input>
+    	<ion-input type="text" [(ngModel)]="newEvent.place"></ion-input>
   	</ion-item>
-  	
+
 	<ion-item>
   		<ion-label floating>Date</ion-label>
   		<ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="newEvent.date"></ion-datetime>
-	</ion-item>	
-	
+	</ion-item>
+
 	<ion-item>
   		<ion-label floating>Time</ion-label>
   		<ion-datetime displayFormat="H:MM" [(ngModel)]="newEvent.time"></ion-datetime>
-	</ion-item>	
-	
+	</ion-item>
+
 	<br>
 	<div class="center">
 		<button ion-button round style (click)="createEvent()">Create Event</button>
 	</div>
-	
+
 
 </ion-content>

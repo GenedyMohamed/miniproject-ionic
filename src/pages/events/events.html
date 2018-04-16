@@ -26,13 +26,13 @@
   <div style="padding-top: 0px;padding-left: 15px;padding-right: 15px;" [ngSwitch]="EventsQuestionsNotes">
 
   <div *ngSwitchCase="'Events'">
- 
+
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
     <ion-item-group *ngFor="let group of groups">
 
       <ion-item-divider sticky>
-        
+
         <ion-label>
             <ion-icon name="md-calendar"></ion-icon>
           {{group.date}}
@@ -55,7 +55,7 @@
     </ion-item-group>
 
   </ion-list>
-  
+
   </div>
 
   <div *ngSwitchCase="'Questions'">
@@ -148,7 +148,7 @@
   </div>
 
   <ion-fab bottom right>
-    <button ion-fab color="dark" (click)="openModal()"><ion-icon name="md-add"></ion-icon></button>
+    <button ion-fab color="dark" (click)="openModal(course)"><ion-icon name="md-add"></ion-icon></button>
   </ion-fab>
 
 </ion-content>
