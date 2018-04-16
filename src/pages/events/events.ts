@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Events} from 'ionic-angular';
 import { EventsService } from '../../app/services/eventsService';
 import { ModalController } from 'ionic-angular';
-import {Service} from '../../app/service';
-import {QuestionsService} from '../../app/services/questionsService'
-import {Profile} from '../profile/profile';
-import {Http, Headers} from '@angular/http';
-import {Add} from '../add/add';
+import { Service } from '../../app/service';
+import { QuestionsService } from '../../app/services/questionsService'
+import { NotesService } from '../../app/services/notesService'
+import { Profile } from '../profile/profile';
+import { Http, Headers } from '@angular/http';
+import { Add } from '../add/add';
 import { QuestionPage } from '../question/question'
 import { EventDetailsPage } from '../event-details/event-details'
 import * as config from '../../app/config.json';
@@ -70,8 +71,8 @@ export class EventsPage {
         "location": "C7.01"
       }
     ]
-  }
-  ];
+  } 
+  ]; 
   course: any = {};
   questions: any[] = [];
   notes: Object[] = [];
@@ -82,6 +83,7 @@ export class EventsPage {
   isAuth: boolean;
   noMore: boolean;
   EventsQuestionsNotes: string;
+  //groups: any = {};
 
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public eventsService: EventsService, public service: Service, public http: Http, public alertCtrl: AlertController, public events: Events, public questionsService: QuestionsService) {
@@ -91,6 +93,7 @@ export class EventsPage {
     this.isAuth = service.isAuthenticated();
     console.log(this.isAuth);
     this.getQuestions();
+    this.getEvents();
     this.EventsQuestionsNotes = "Events";
     this.getNotes();
   }
@@ -111,6 +114,16 @@ export class EventsPage {
     })
   }
 
+  getEvents(){
+    this.eventsService.getEvents(this.course.id)
+      .then((data) => {
+        //this.groups = data.data;
+        console.log(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   getQuestions() {
     this.questionsService.getQuestions(this.course.id)

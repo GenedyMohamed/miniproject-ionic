@@ -20,8 +20,8 @@ export class TabsPage {
   tab1Root: any = Home;
   tab2Root: any = AboutPage;
   tab3Root: any = ContactPage;
-  //tab4Root: any = Majors;
-  tab4Root: any = Courses;
+  tab4Root: any = Majors;
+  //tab4Root: any = Courses;
   tab5Root: any = SubscribePage;
   tab6Root: any = StorescomponentsPage;
   tab7Root: any = EventDetailsPage;
