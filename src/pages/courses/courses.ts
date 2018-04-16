@@ -5,7 +5,7 @@ import {Service} from '../../app/service';
 import { QuestionsService } from '../../app/services/questionsService'
 import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
-import { Questions } from '../questions/questions';
+import { QuestionPage } from '../questions/questions';
 import * as config from '../../app/config.json';
 import { EventsPage } from '../events/events';
 
@@ -25,21 +25,18 @@ export class Courses {
   }
 
   getCourses() {
-    /*this.questionsService.getCourses(this.major.id, this.semester)
+    this.questionsService.getCourses(this.major.id, this.semester)
       .then((data) => {
         this.courses = data['courses'];
       })
       .catch((err) => {
         console.log(err);
-      }); */
+      }); 
 
-      this.courses = this.questionsService.getCourses()
+     // this.courses = this.questionsService.getCourses()
   }
 
   courseSelected(course) {
-    /*this.navCtrl.push(Questions, {
-      course: course
-    }); */
     this.navCtrl.push(EventsPage, {
       course: course
     });

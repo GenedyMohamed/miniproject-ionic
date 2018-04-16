@@ -104,8 +104,8 @@ export class QuestionsService {
     });
   }
 
-  //getCourses(major_id, semester) {
-  getCourses() {
+  getCourses(major_id, semester) {
+  /*getCourses() {
 
     let courses = [
       {
@@ -125,9 +125,9 @@ export class QuestionsService {
       }
     ]
 
-    return courses;
+    return courses; */
 
-    /*new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       let headers1 = new Headers();
       headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
 
@@ -139,7 +139,7 @@ export class QuestionsService {
         err => {
           reject(err);
         });
-    }); */
+    });
 
   }
 
