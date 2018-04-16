@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
+import { EventsService } from '../../app/services/eventsService';
+import {Service} from '../../app/service';
 
 /**
  * Generated class for the NewEventPage page.
@@ -16,11 +18,14 @@ import { ViewController } from 'ionic-angular';
 })
 export class NewEventPage {
 
-  newEvent = { title: "", description: "", location: "", date: "", time: "" };
+  newEvent = { title: "", description: "", place: "", date: "", time: "" };
   params: any;
+  course: any = {};
 
-  constructor(public navCtrl: NavController, public viewCtrl : ViewController ,public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public service: Service, public viewCtrl : ViewController, public eventsService: EventsService ,public navParams: NavParams) {
     this.params = navParams;
+    this.course = this.params.get('course');
+    console.log(this.course);
   }
 
   closeModal(){
@@ -32,7 +37,14 @@ export class NewEventPage {
   }
 
   createEvent() {
-
+    this.eventsService.createEvent(this.service.getToken(),this.course.id, this.newEvent)
+      .then((data) => {
+        console.log(data);
+        this.viewCtrl.dismiss();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
 }

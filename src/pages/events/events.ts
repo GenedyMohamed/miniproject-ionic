@@ -71,8 +71,8 @@ export class EventsPage {
         "location": "C7.01"
       }
     ]
-  } 
-  ]; 
+  }
+  ];
   course: any = {};
   questions: any[] = [];
   notes: Object[] = [];
@@ -98,8 +98,8 @@ export class EventsPage {
     this.getNotes();
   }
 
-  openModal(){
-    var modalPage = this.modalCtrl.create('NewEventPage', {});
+  openModal(course){
+    var modalPage = this.modalCtrl.create('NewEventPage', {course : course});
     modalPage.present();
   }
 
@@ -118,7 +118,7 @@ export class EventsPage {
     this.eventsService.getEvents(this.course.id)
       .then((data) => {
         //this.groups = data.data;
-        console.log(data.data);
+        //console.log(data.data);
       })
       .catch((err) => {
         console.log(err);
