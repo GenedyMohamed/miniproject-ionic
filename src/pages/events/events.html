@@ -1,12 +1,67 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>All questions</ion-title>
+    <ion-title>
+      Course Name
+    </ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content class="outer-content speaker-list" style=" background-color: #e3e8ef;">
-  <ion-list no-lines>
+<ion-content>
 
+  <div padding>
+  <ion-segment class="ion-header center" style="width:300px;padding-right: 20px" [(ngModel)]="EventsQuestionsNotes" >
+    <ion-segment-button value="Events">
+      Events
+    </ion-segment-button>
+    <ion-segment-button value="Questions">
+      Questions
+    </ion-segment-button>
+    <ion-segment-button value="Notes">
+      Notes
+    </ion-segment-button>
+  </ion-segment>
+  </div>
+
+  <div style="padding-top: 0px;padding-left: 15px;padding-right: 15px;" [ngSwitch]="EventsQuestionsNotes">
+
+  <div *ngSwitchCase="'Events'">
+
+  <ion-list #scheduleList [hidden]="shownSessions === 0">
+
+    <ion-item-group *ngFor="let group of groups">
+
+      <ion-item-divider sticky>
+
+        <ion-label>
+            <ion-icon name="md-calendar"></ion-icon>
+          {{group.date}}
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-sliding *ngFor="let event of group.events" class="left-bar" ion-label>
+
+        <button ion-item (click)="goToEventDetail(event)" >
+          <h3>{{event.name}}</h3>
+          <p>
+            {{event.timeStart}} &mdash;
+            {{event.timeEnd}}:
+            {{event.location}}
+          </p>
+        </button>
+
+      </ion-item-sliding>
+
+    </ion-item-group>
+
+  </ion-list>
+
+  </div>
+
+  <div *ngSwitchCase="'Questions'">
+  <ion-list no-lines >
+
+    Questions
     <!-- <ion-item>
         <ion-label fixed>Ask a question</ion-label>
         <ion-input type="text" value=""  [(ngModel)]="question.body"></ion-input>
@@ -63,6 +118,7 @@
     </ion-card>
 
   </ion-list>
+
   <div class="center">
 
     <button ion-button clear [disabled]="noMore" (click)="more()">show more questions</button>
@@ -73,4 +129,26 @@
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
+
+  </div>
+
+  <div *ngSwitchCase="'Notes'">
+  <ion-list>
+  <ion-item  *ngFor="let note of notes">
+      <ion-icon item-left name="paper"></ion-icon>
+      <h2>{{note.name}}</h2>
+      <h4>{{note.owner}}</h4>
+      <h4>{{note.postTime}}</h4>
+      <button item-right ion-button style="font-size: 12px">Download</button>
+  </ion-item>
+
+  </ion-list>
+
+  </div>
+  </div>
+
+  <ion-fab bottom right>
+    <button ion-fab color="dark" (click)="openModal(course)"><ion-icon name="md-add"></ion-icon></button>
+  </ion-fab>
+
 </ion-content>

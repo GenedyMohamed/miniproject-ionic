@@ -105,6 +105,27 @@ export class QuestionsService {
   }
 
   getCourses(major_id, semester) {
+  /*getCourses() {
+
+    let courses = [
+      {
+        "course_name": "Course 1",
+        "course_code": "CSEN 101",
+        "Semester": 1,
+      },
+      {
+        "course_name": "Course 2",
+        "course_code": "CSEN 102",
+        "Semester": 1,
+      },
+      {
+        "course_name": "Course 3",
+        "course_code": "CSEN 103",
+        "Semester": 1,
+      }
+    ]
+
+    return courses; */
 
     return new Promise((resolve, reject) => {
       let headers1 = new Headers();

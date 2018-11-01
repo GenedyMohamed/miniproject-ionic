@@ -7,7 +7,8 @@ import { QuestionsService } from '../../app/services/questionsService'
 import {Profile} from '../profile/profile';
 import {Http, Headers} from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
-import { QuestionPage } from '../question/question'
+import { QuestionPage } from '../question/question';
+import { StorescomponentsPage } from '../storescomponents/storescomponents';
 import * as config from '../../app/config.json';
 
 
@@ -24,6 +25,8 @@ export class Home {
     this.statusBar.backgroundColorByHexString('#FF7043');
     this.reload();
   }
+
+  
   reload() {
     this.isAuth = this.service.isAuthenticated();
     if (this.isAuth) {
@@ -40,6 +43,7 @@ export class Home {
     //this.navCtrl.pop();
     //console.log('test');
   }
+  
   ionViewDidEnter() {
     this.reload();
   }

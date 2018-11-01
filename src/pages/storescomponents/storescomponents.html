@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Stores & Components</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+	
+	<div padding>
+  <ion-segment class="ion-header center" style="width:300px;padding-right: 20px" [(ngModel)]="StoresAndComponents" >
+    <ion-segment-button value="Stores">
+      Stores
+    </ion-segment-button>
+    <ion-segment-button value="Components">
+      Components
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div style="padding-top: 0px;padding-left: 15px;padding-right: 15px;" [ngSwitch]="StoresAndComponents">
+
+  <div *ngSwitchCase="'Stores'">
+
+  <ion-searchbar>
+    [(ngModel)] = "myInput"
+  </ion-searchbar>
+  
+  <ion-list>
+    <ion-item *ngFor="let store of stores" (click)="goToStore(store)">
+      <div style=" background: grey ;position: absolute; border-radius: 100px;font-size: 50px ;width:60px ; height: 60px; color: white;text-align:center;"><ion-icon name="person" ></ion-icon></div>
+      <div style="padding-left: 70px">
+           <div style="font-size: 16px">{{store.name}}</div>
+           <div style="font-size: 14px">{{store.category}}</div>
+           <div style="padding-left: 75px" ><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star-half"></ion-icon> <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></div>
+        </div>
+    </ion-item>
+  </ion-list>
+  </div>
+
+  <div *ngSwitchCase="'Components'">
+
+  <ion-searchbar>
+    [(ngModel)] = "myInput"
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let component of components" (click)="goToComponent(component)">
+      <ion-thumbnail item-start>
+        <img src="{{component.image_path}}">
+      </ion-thumbnail>
+      <h2>{{component.title}}</h2>
+      <h3>{{component.category_name}}</h3>
+      <h4>{{component.price}}</h4>
+    </ion-item>
+  </ion-list>
+  </div>
+  </div>
+</ion-content>

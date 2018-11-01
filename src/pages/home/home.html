@@ -14,14 +14,17 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <!-- If a guest -->
-  <div *ngIf='!isAuth'>
+  <div *ngIf='!isAuth' style="padding: 10px">
     <h1>Welcome aboard</h1>
     <h3>AskAfellow</h3>
     <p>
       Ask a fellow is an educational social network connecting students from the GUC. It's the right place to ask your questions and get answers from your colleagues. No more Facebook study groups hassle, welcome to your learning environment!
     </p>
 
+    
+
   </div>
+
   <!-- If a user -->
   <div *ngIf='isAuth'>
 
