@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StoredetailsPage } from '../storedetails/storedetails';
 import { ComponentDetailsPage } from '../component-details/component-details';
-
+import { ComponentsService } from '../../app/services/componentsService';
+import { Service } from '../../app/service';
+import { Http, Headers } from '@angular/http';
 
 /**
  * Generated class for the StorescomponentsPage page.
@@ -23,7 +25,7 @@ export class StorescomponentsPage {
   components: Object[] = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public componentsService: ComponentsService) {
     this.StoresAndComponents = "Stores";
     this.getStores();
     this.getComponents();
@@ -50,8 +52,14 @@ export class StorescomponentsPage {
   }
 
   getComponents(){
-      this.components = [{"name" : "IR sensor", "category":"Sensors", "Price": "100 EGP"}, 
-      {"name":"ultrasonic sensor", "category":"Sensors", "Price": "100 EGP"}];
+
+      this.componentsService.getComponents()
+      .then((data) => {
+        this.components = data['data'].data;
+      })
+      .catch((err) => {
+        console.log("error: " + err);
+      })
   }
 
 }
