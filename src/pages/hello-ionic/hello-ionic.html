@@ -10,35 +10,43 @@
 
 <ion-content padding>
 
-  <h3>Welcome to your first Ionic app!</h3>
+  <h3>Movies App</h3>
+<p> 
+  <ion-title>{{num}} Available Movies</ion-title>
+</p>
 
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
 <p>
-  {{num}} Available Movies
-</p>
+    Enjoy a diverse collection of the most popular movies in the world :D 
+  </p>
+  <p>
+      Here are the most rated 10 movies! 
+   </p>
 
-<p> Page
-  {{page}} 
-</p>
-
+   <p>
+      <button ion-button color="primary" menuToggle>Toggle Menu</button>
+    </p>
 
   <ion-grid>
-    <ion-row>
+    <ion-row> 
       <ion-col>
-       <div ion-item *ngFor="let movie of movies"  >
-      <button >{{movie.title}}  </button>
-        
+       <div ion-item *ngFor="let movie of movies" style="font-family:Verdana, Geneva, Taho" >
+      <button ><img src="{{movie.small_cover_image}}" alt="" (click)="movieSuggestions(movie.id)" ></button> 
+        <ion-title>{{movie.title_long}} </ion-title>
+        <div>
+          <ion-title >{{movie.genres}}</ion-title>
+        </div> 
+        {{movie.summary}}
+        <div ><rating [(ngModel)]="movie.rating"
+          readOnly="true"
+          max="10">
+        </rating></div> 
       </div> 
+    
       </ion-col>
     </ion-row>
-
   </ion-grid>
+  <p> 
+      <ion-title>Page {{page}} </ion-title>
+    
+    </p>
 </ion-content>

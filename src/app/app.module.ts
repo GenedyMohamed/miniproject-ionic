@@ -12,6 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ServiceProvider } from '../providers/service/service';
 import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
+import { Ionic2RatingModule } from 'ionic2-rating';
+
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { HttpModule } from '@angular/http';
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

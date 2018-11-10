@@ -22,7 +22,6 @@ export class ServiceProvider {
 //return this.http.get<{movies:any[]}>('https://yts.am/api/v2/movie_details.json').map(res => res.movies);
     return new Promise((resolve, reject) => {
       var url='https://yts.am/api/v2/list_movies.json';
-    
     this.http.get(url).map(res => res.json()).subscribe(data => {
       resolve(data);
     } ,
@@ -32,9 +31,17 @@ export class ServiceProvider {
 });
   }
 
-getNumber()
+getSuggestions(id)
 {
-  return  this.http.get('https://yts.am/api/v2/list_movies.json/movie_count');
+  return new Promise((resolve, reject) => {
+      var url2='https://yts.am/api/v2/movie_suggestions.json';
+    this.http.get(`${url2}/?movie-id=`+id).map(res => res.json()).subscribe(data => {
+      resolve(data);
+    } ,
+    err => {
+      reject(err);
+    });
+});
 }
 
 }
