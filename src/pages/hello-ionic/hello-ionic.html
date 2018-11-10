@@ -21,5 +21,24 @@
   <p>
     <button ion-button color="primary" menuToggle>Toggle Menu</button>
   </p>
+<p>
+  {{num}} Available Movies
+</p>
 
+<p> Page
+  {{page}} 
+</p>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+       <div ion-item *ngFor="let movie of movies"  >
+      <button >{{movie.title}}  </button>
+        
+      </div> 
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>
