@@ -31,17 +31,6 @@ export class ServiceProvider {
 });
   }
 
-getSuggestions(id)
-{
-  return new Promise((resolve, reject) => {
-      var url2='https://yts.am/api/v2/movie_suggestions.json';
-    this.http.get(`${url2}/?movie-id=`+id).map(res => res.json()).subscribe(data => {
-      resolve(data);
-    } ,
-    err => {
-      reject(err);
-    });
-});
-}
+
 
 }

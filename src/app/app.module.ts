@@ -13,6 +13,8 @@ import { ServiceProvider } from '../providers/service/service';
 import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { MovieDetailsPage } from '../pages/movie-details/movie-details';
+import { CategoryPage } from '../pages/category/category';
 
 
 
@@ -21,6 +23,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
+    MovieDetailsPage,
+    CategoryPage,
     ListPage
   ],
   imports: [
@@ -32,9 +36,11 @@ import { Ionic2RatingModule } from 'ionic2-rating';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    MyApp,  
     HelloIonicPage,
     ItemDetailsPage,
+    MovieDetailsPage,
+    CategoryPage,
     ListPage
   ],
   providers: [

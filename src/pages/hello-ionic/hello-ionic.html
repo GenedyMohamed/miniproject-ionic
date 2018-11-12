@@ -5,6 +5,7 @@
     </button>
     <ion-title>Hello Ionic</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 
@@ -19,18 +20,26 @@
     Enjoy a diverse collection of the most popular movies in the world :D 
   </p>
   <p>
-      Here are the most rated 10 movies! 
+      Here are the most rated 20 movies! 
    </p>
 
    <p>
       <button ion-button color="primary" menuToggle>Toggle Menu</button>
     </p>
 
+    <!--    list of categories
+    <ion-list radio-group>
+      <ion-item *ngFor="let category of categories" >
+        <ion-label>{{category}}</ion-label>
+        <ion-radio [checked]="category === selectedItem" (click)="suggestions($event,category)"></ion-radio>
+      </ion-item>
+    </ion-list> -->
+
   <ion-grid>
     <ion-row> 
       <ion-col>
        <div ion-item *ngFor="let movie of movies" style="font-family:Verdana, Geneva, Taho" >
-      <button ><img src="{{movie.small_cover_image}}" alt="" (click)="movieSuggestions(movie.id)" ></button> 
+      <button ><img src="{{movie.small_cover_image}}" alt="" (click)="movieDetails($event,movie)" ></button> 
         <ion-title>{{movie.title_long}} </ion-title>
         <div>
           <ion-title >{{movie.genres}}</ion-title>
