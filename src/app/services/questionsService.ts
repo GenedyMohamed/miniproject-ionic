@@ -148,6 +148,7 @@ export class QuestionsService {
       let headers1 = new Headers();
       headers1.append('Access-Control-Allow-Origin', 'http://localhost:8100');
       var url = config.server + 'api/v1/browse/';
+      console.log(url)
 
       this.http.get(url).map(res => res.json()).subscribe(data => {
         resolve(data);

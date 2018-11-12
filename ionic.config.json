@@ -1,8 +1,8 @@
 {
   "name": "askafellow",
-  "app_id": "f16b14db",
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "pro_id": "f16b14db"
 }
