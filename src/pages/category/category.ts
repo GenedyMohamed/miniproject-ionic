@@ -21,6 +21,8 @@ export class CategoryPage {
   data: any=[];
   belongs: boolean=true;
   filtered: any=[];
+  filter: any;
+  word:any=[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public service:ServiceProvider) {
          this.selectedCategory= this.navParams.get('category');
          this.relatedMovies();
@@ -33,28 +35,48 @@ export class CategoryPage {
   {
       console.log('selected is', this.selectedCategory);
     this.data=this.service.getMovies().then((data)=> {
-      this.movies=data['data']['movies'];
+      //obtaining the movies array
+      
+      for(let element1 in data['data']){
+
+        if(element1== 'movies')
+         this.movies=data['data']['movies'];
+        
+         }//end for
         let element=0;
         for(let i=0; i<this.movies.length;i++)
         {
-          console.log(this.movies[i]['genres']);
-          while(element<this.selectedCategory.length){
-               if(this.movies[i]['genres'][element] !== this.selectedCategory[element]){
-                     this.belongs=false;
+          console.log("movie ", i, " category: ", this.movies[i]['genres']);
+          console.log(this.movies[i]['genres'].length)
+          while(element<this.movies[i]['genres'].length){
+               this.filter= this.movies[i]['genres'][element];
+               
+               //obtaining the chosen category
+              
+                this.word=this.selectedCategory.split(',');
+                ;console.log("word= ", this.word);
+               
+               if(this.filter !== this.word[element]){
+                    console.log(this.movies[i]['genres'][element]);
+                    console.log(this.word[element]);
+                    this.belongs=false;
                      console.log(this.belongs);
+               }
                      element++;
-               }//end if
+            
           }
            
             if(this.belongs == true )
-            {                    
-                  this.filtered.push(this.movies[i]);
-                  console.log(this.movies[i]['genres']);
-                  console.log(this.movies[i]['title']);
+            {      
+              console.log(this.movies[i]['genres']);
+              console.log(this.movies[i]['title']);              
+              this.filtered.push(this.movies[i]);
+                
             }
 
           element=0;
           this.belongs=true; 
+          this.word=[];
          
         }//end for
 

@@ -1,3 +1,12 @@
 page-movie-details {
 
+
+    img {
+        height: 100px;
+        width: 100px;
+        //object-fit: contain;
+        object-position: top 75%;
+        object-fit: cover;
+        overflow: hidden;
+        }
 }

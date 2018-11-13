@@ -35,6 +35,14 @@
       </ion-item>
     </ion-list> -->
 
+    <ion-item>
+      <ion-label> Categories</ion-label>
+      <ion-select [(ngModel)]= "category" (ionChange)= " suggestions($event, category);">
+        <ion-option *ngFor= "let category of categories">{{category}}</ion-option>
+
+      </ion-select>
+    </ion-item>
+
   <ion-grid>
     <ion-row> 
       <ion-col>

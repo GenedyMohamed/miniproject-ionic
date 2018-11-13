@@ -21,6 +21,7 @@ export class HelloIonicPage {
   limit: any;
   img: any;
   genre:any;
+  category: any;
   constructor(public service:ServiceProvider, public nav: NavController) {
 
     console.log('entered constructor');
@@ -56,7 +57,7 @@ export class HelloIonicPage {
               if(!(this.categories.indexOf(this.genre) > -1))
               {
                   this.categories.push(this.movies[i]['genres']);
-                  console.log('genre is', this.movies[i]['genres'])
+                 // console.log('genre is', this.movies[i]['genres'])
               }
         }
 
