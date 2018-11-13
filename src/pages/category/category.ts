@@ -46,44 +46,29 @@ export class CategoryPage {
         let element=0;
         for(let i=0; i<this.movies.length;i++)
         {
-          console.log("movie ", i, " category: ", this.movies[i]['genres']);
-          console.log(this.movies[i]['genres'].length)
+         // console.log("movie ", i, " category: ", this.movies[i]['genres']);
+         // console.log(this.movies[i]['genres'].length)
           while(element<this.movies[i]['genres'].length){
                this.filter= this.movies[i]['genres'][element];
-               
                //obtaining the chosen category
-              
-                this.word=this.selectedCategory.split(',');
-                ;console.log("word= ", this.word);
-               
+                this.word=this.selectedCategory.split(',');   
                if(this.filter !== this.word[element]){
-                    console.log(this.movies[i]['genres'][element]);
-                    console.log(this.word[element]);
                     this.belongs=false;
-                     console.log(this.belongs);
-               }
+               }//end if
                      element++;
-            
-          }
+          }//end while
            
             if(this.belongs == true )
-            {      
-              console.log(this.movies[i]['genres']);
-              console.log(this.movies[i]['title']);              
+            {                    
               this.filtered.push(this.movies[i]);
-                
-            }
+            }//end if
 
+            //reinitialize these variables to their original values again
           element=0;
           this.belongs=true; 
           this.word=[];
          
         }//end for
-
-        for(let i=0; i<this.filtered.length;i++)
-        {
-          console.log(this.filtered[i]);
-        }
      });//end callback function
  
   }//end method

@@ -27,17 +27,10 @@
       <button ion-button color="primary" menuToggle>Toggle Menu</button>
     </p>
 
-    <!--    list of categories
-    <ion-list radio-group>
-      <ion-item *ngFor="let category of categories" >
-        <ion-label>{{category}}</ion-label>
-        <ion-radio [checked]="category === selectedItem" (click)="suggestions($event,category)"></ion-radio>
-      </ion-item>
-    </ion-list> -->
 
     <ion-item>
       <ion-label> Categories</ion-label>
-      <ion-select [(ngModel)]= "category" (ionChange)= " suggestions($event, category);">
+      <ion-select  [(ngModel)]= "category" (ionChange)= " suggestions($event, category);">
         <ion-option *ngFor= "let category of categories">{{category}}</ion-option>
 
       </ion-select>
